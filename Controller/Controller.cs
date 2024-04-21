@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Application
+namespace Application.Controller
 {
 
     // Controller
@@ -9,6 +9,8 @@ namespace Application
     {
         private readonly Model model;
         private readonly View view;
+        public class Model { };
+        public class View { };
 
         public Controller(Model model, View view)
         {

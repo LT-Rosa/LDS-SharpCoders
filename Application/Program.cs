@@ -5,8 +5,36 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+
+
 namespace Application
 {
+    public class Model {
+        public List<string> RecolherDadosFicheiro() => new List<string> { "Dados do arquivo" };
+        public List<string> ProcessarDadosAPI(List<string> dados) => dados;
+    };
+    public class View { 
+        public void AcionarInterface() { }
+        public void ApresentarJanela() { }
+        public void FalhaCarregarFicheiro() { }
+        public void JanelaCarregarFicheiro() { }
+        public void ApresentaMensagemAguardar() { }
+        public void PrevisualizarFicheiro(List<string> dados) { }
+        public void MostraPagina(string pagina) { }
+        public void OutputDados(List<string> dadosProcessados) { }
+
+    };
+    public class Controller { 
+        public Controller(Model model, View view) { }
+        public void IniciarPrograma() { }
+        public void CarregaFicheiro() { }
+        public void NavegarPaginaAnterior() { }
+        public void NavegarProximaPagina() { }
+        public void SubmeterFicheiro() { }
+        public void AcionarFim() { }
+       
+    };
     public class Program
     {
         public static void Main(string[] args)
