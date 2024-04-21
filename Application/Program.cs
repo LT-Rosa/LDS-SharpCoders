@@ -7,6 +7,10 @@ using System.Windows.Forms;
 
 namespace Application
 {
+    public class Model {};
+    public class View {};
+    public class Controller {};
+    }       
     public class Program
     {
         public static void Main(string[] args)
