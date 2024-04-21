@@ -36,9 +36,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="View.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="View.cs" />
     <Compile Include="View.Designer.cs">
       <DependentUpon>View.cs</DependentUpon>
     </Compile>
