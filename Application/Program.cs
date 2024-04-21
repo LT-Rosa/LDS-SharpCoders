@@ -16,15 +16,9 @@ namespace Application
     public class View : ViewBase
     {
     };
-    public class Controller { 
+    public class Controller : ControllerBase
+    { 
         public Controller(Model model, View view) { }
-        public void IniciarPrograma() { }
-        public void CarregaFicheiro() { }
-        public void NavegarPaginaAnterior() { }
-        public void NavegarProximaPagina() { }
-        public void SubmeterFicheiro() { }
-        public void AcionarFim() { }
-       
     };
     public class Program
     {
