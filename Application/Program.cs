@@ -10,9 +10,8 @@ using System.Windows.Forms;
 
 namespace Application
 {
-    public class Model {
-        public List<string> RecolherDadosFicheiro() => new List<string> { "Dados do arquivo" };
-        public List<string> ProcessarDadosAPI(List<string> dados) => dados;
+    public class Model : ModelBase
+    {
     };
     public class View : ViewBase
     {
