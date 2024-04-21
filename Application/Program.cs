@@ -14,16 +14,8 @@ namespace Application
         public List<string> RecolherDadosFicheiro() => new List<string> { "Dados do arquivo" };
         public List<string> ProcessarDadosAPI(List<string> dados) => dados;
     };
-    public class View { 
-        public void AcionarInterface() { }
-        public void ApresentarJanela() { }
-        public void FalhaCarregarFicheiro() { }
-        public void JanelaCarregarFicheiro() { }
-        public void ApresentaMensagemAguardar() { }
-        public void PrevisualizarFicheiro(List<string> dados) { }
-        public void MostraPagina(string pagina) { }
-        public void OutputDados(List<string> dadosProcessados) { }
-
+    public class View : ViewBase
+    {
     };
     public class Controller { 
         public Controller(Model model, View view) { }
