@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using static Application.Controller.Controller;
 
 namespace Application.Controller
 {
@@ -7,21 +8,22 @@ namespace Application.Controller
     // Controller
     public class Controller
     {
-        private readonly Model model;
-        private readonly View view;
         public class Model { };
-        public class View { };
+        public class View { 
+            public void AcionarInterface() { }
+            public void ApresentarJanela() { }
+        };
 
         public Controller(Model model, View view)
         {
-            this.model = model;
-            this.view = view;
+            model = model;
+            view = view;
         }
 
         public void IniciarPrograma()
         {
-            view.AcinarInterface();
-            view.ApresentarJanela();
+            View.AcionarInterface();
+            View.ApresentarJanela();
         }
 
         public void CarregaFicheiro()
