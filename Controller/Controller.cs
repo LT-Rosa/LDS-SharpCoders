@@ -1,29 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using static Application.Controller.Controller;
+using System.ComponentModel.Design;
+
 
 namespace Application.Controller
 {
-
+    public class Model { };
+    public class View { };
     // Controller
     public class Controller
     {
-        public class Model { };
-        public class View { 
-            public void AcionarInterface() { }
-            public void ApresentarJanela() { }
-        };
-
-        public Controller(Model model, View view)
-        {
-            model = model;
-            view = view;
-        }
+        readonly View view=new();
+        readonly Model model=new();
 
         public void IniciarPrograma()
         {
-            View.AcionarInterface();
-            View.ApresentarJanela();
+            view.AcionarInterface();
+            view.ApresentarJanela();
         }
 
         public void CarregaFicheiro()
@@ -65,6 +58,10 @@ namespace Application.Controller
         public void AcionarFim()
         {
             view.MensagemSaida();
+        }
+
+        public class Model
+        {
         }
     }
 }
