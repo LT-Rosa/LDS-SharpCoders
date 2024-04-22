@@ -27,15 +27,20 @@ assim uma base sólida para a definição de estratégias e planos de desenvolvi
 
 ## Objetivos:
 
-•	Desenvolver uma aplicação robusta em C# integrando a API ML.NET.
-•	Facilitar a projeção de custos e ganhos futuros da empresa.
-•	Permitir a entrada de dados financeiros através de ficheiros CSV ou Excel.
-•	Proporcionar uma visualização interativa dos dados, permitindo o controle total pelo utilizador.
+- Desenvolver uma aplicação robusta em C# integrando a API ML.NET.
+
+- Facilitar a projeção de custos e ganhos futuros da empresa.
+
+- Permitir a entrada de dados financeiros através de ficheiros CSV ou Excel.
+
+- Proporcionar uma visualização interativa dos dados, permitindo o controle total pelo utilizador.
 
 ## Metodologia:
 
-•	Implementação de modelos de machine learning com ML.NET para analisar tendências financeiras e realizar previsões.
-•	Criação de uma interface de utilizador intuitiva seguindo a arquitetura MVC, para uma interação eficaz com o sistema.
-•	Desenvolvimento de funcionalidades para a importação de dados e visualização gráfica das projeções financeiras.
+- Implementação de modelos de machine learning com ML.NET para analisar tendências financeiras e realizar previsões.
+
+- Criação de uma interface de utilizador intuitiva seguindo a arquitetura MVC, para uma interação eficaz com o sistema.
+
+- Desenvolvimento de funcionalidades para a importação de dados e visualização gráfica das projeções financeiras.
 
 
