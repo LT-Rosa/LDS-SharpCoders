@@ -1,4 +1,3 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
@@ -11,10 +10,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "View", "View\View.csproj", "{788C7052-42EB-4095-83AF-4FBB8755C428}"
+	ProjectSection(ProjectDependencies) = postProject
+		{21A8CF86-C91C-4701-855F-9579B00EC7BD} = {21A8CF86-C91C-4701-855F-9579B00EC7BD}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controller", "Controller\Controller.csproj", "{21A8CF86-C91C-4701-855F-9579B00EC7BD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{2E9DD8F3-645E-47C8-9CAE-42AF6BF6B0AB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{21A8CF86-C91C-4701-855F-9579B00EC7BD} = {21A8CF86-C91C-4701-855F-9579B00EC7BD}
+		{788C7052-42EB-4095-83AF-4FBB8755C428} = {788C7052-42EB-4095-83AF-4FBB8755C428}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
