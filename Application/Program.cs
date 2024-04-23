@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-
-
-
-namespace Application
+﻿namespace Application
 {
     public class Model : ModelBase
     {
@@ -17,7 +7,7 @@ namespace Application
     {
     };
     public class Controller : ControllerBase
-    { 
+    {
         public Controller(Model model, View view) { }
     };
     public class Program

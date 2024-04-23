@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-
-
-namespace Application.Controller
+﻿namespace Application.Controller
 {
     public class Model { };
     public class View { };
     // Controller
     public class Controller
     {
-        readonly View view=new();
-        readonly Model model=new();
+        readonly View view = new();
+        readonly Model model = new();
 
         public void IniciarPrograma()
         {

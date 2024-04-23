@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Application.Model
 {
-    
+
     public class View { };
     public class Controller { };
 
