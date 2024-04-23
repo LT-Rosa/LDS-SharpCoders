@@ -14,9 +14,9 @@
     {
         public static void Main(string[] args)
         {
-            Model model = new Model();
-            View view = new View();
-            Controller controller = new Controller(model, view);
+            Model model = new();
+            View view = new();
+            Controller controller = new(model, view);
 
             controller.IniciarPrograma();
             controller.CarregaFicheiro();
