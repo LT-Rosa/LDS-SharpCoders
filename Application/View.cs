@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
 namespace Application
 {
-    // View
     public class View
     {
         public void AcionarInterface()
@@ -68,5 +66,6 @@ namespace Application
             // Simulação de mensagem de saída
             Console.WriteLine("Encerrando o programa...");
         }
+
     }
 }
