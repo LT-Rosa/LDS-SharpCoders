@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 
 
-namespace Application.Model
+namespace Application
 {
-
-    public class View { };
-    public class Controller { };
-
     // Model
     public class Model
     {

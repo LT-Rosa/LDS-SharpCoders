@@ -5,7 +5,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWindowsForms>true</UseWindowsForms>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
-    <StartupObject>Application.Program</StartupObject>
+    <StartupObject>Application.MainController.Application</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Properties\**" />

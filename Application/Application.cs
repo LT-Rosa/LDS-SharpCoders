@@ -1,30 +1,21 @@
-﻿namespace Application
+﻿using System;
+
+namespace Application
 {
-    public class Model : ModelBase
+    namespace MainController
     {
-    };
-    public class View : ViewBase
-    {
-    };
-    public class Controller : ControllerBase
-    {
-        public Controller(Model model, View view) { }
-    };
-    public class Application
-    {
-        public static void Main(string[] args)
+        static class Application
         {
-            Model model = new();
-            View view = new();
-            Controller controller = new(model, view);
+            static MainController.Controller control;
 
-            controller.IniciarPrograma();
-            controller.CarregaFicheiro();
-            controller.NavegarPaginaAnterior();
-            controller.NavegarProximaPagina();
-            controller.SubmeterFicheiro();
-            controller.AcionarFim();
+            [STAThread]
+            static void Main()
+            {
+                control = new Controller();
+                control.IniciarPrograma();
+            }
         }
-    }
 
+
+    }
 }

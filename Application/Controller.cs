@@ -1,62 +1,63 @@
-﻿namespace Application.Controller
+﻿using System;
+
+namespace Application
 {
-    public class Model { };
-    public class View { };
-    // Controller
-    public class Controller
+    namespace MainController
     {
-        readonly View view = new();
-        readonly Model model = new();
-
-        public void IniciarPrograma()
+  
+        // Controller
+        class Controller
         {
-            view.AcionarInterface();
-            view.ApresentarJanela();
-        }
+            readonly View view;
+            readonly Model model;
 
-        public void CarregaFicheiro()
-        {
-            // Simulação de carregar o arquivo
-            bool carregouComSucesso = true; // Simulação de sucesso ao carregar o arquivo
-
-            if (carregouComSucesso)
+            public void IniciarPrograma()
             {
-                view.JanelaCarregarFicheiro();
-                view.ApresentaMensagemAguardar();
+                view.AcionarInterface();
+                view.ApresentarJanela();
+            }
 
+            public void CarregaFicheiro()
+            {
+                // Simulação de carregar o arquivo
+                bool carregouComSucesso = true; // Simulação de sucesso ao carregar o arquivo
+ 
+                if (carregouComSucesso)
+                {
+                    view.JanelaCarregarFicheiro();
+                    view.ApresentaMensagemAguardar();
+
+                    var dados = model.RecolherDadosFicheiro();
+                    view.PrevisualizarFicheiro(dados);
+                }
+                else
+                {
+                    view.FalhaCarregarFicheiro();
+                }
+            }
+
+            public void NavegarPaginaAnterior()
+            {
+                view.MostraPagina("Página anterior");
+            }
+
+            public void NavegarProximaPagina()
+            {
+                view.MostraPagina("Próxima página");
+            }
+
+            public void SubmeterFicheiro()
+            {
                 var dados = model.RecolherDadosFicheiro();
-                view.PrevisualizarFicheiro(dados);
+                var dadosProcessados = model.ProcessarDadosAPI(dados);
+                view.OutputDados(dadosProcessados);
             }
-            else
+
+            public void AcionarFim()
             {
-                view.FalhaCarregarFicheiro();
+                view.MensagemSaida();
             }
-        }
 
-        public void NavegarPaginaAnterior()
-        {
-            view.MostraPagina("Página anterior");
-        }
-
-        public void NavegarProximaPagina()
-        {
-            view.MostraPagina("Próxima página");
-        }
-
-        public void SubmeterFicheiro()
-        {
-            var dados = model.RecolherDadosFicheiro();
-            var dadosProcessados = model.ProcessarDadosAPI(dados);
-            view.OutputDados(dadosProcessados);
-        }
-
-        public void AcionarFim()
-        {
-            view.MensagemSaida();
-        }
-
-        public class Model
-        {
         }
     }
 }
