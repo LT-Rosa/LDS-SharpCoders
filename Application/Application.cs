@@ -10,7 +10,7 @@
     {
         public Controller(Model model, View view) { }
     };
-    public class Program
+    public class Application
     {
         public static void Main(string[] args)
         {
