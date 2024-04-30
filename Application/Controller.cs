@@ -17,6 +17,7 @@ namespace Application
                 view.ApresentarJanela();
             }
 
+
             public void CarregaFicheiro()
             {
                 // Simulação de carregar o arquivo
@@ -36,16 +37,19 @@ namespace Application
                 }
             }
 
+            //Envio de mensagem de página anterior para view
             public void NavegarPaginaAnterior()
             {
                 view.MostraPagina("Página anterior");
             }
 
+            //Envio de mensagem de proxima página para view
             public void NavegarProximaPagina()
             {
                 view.MostraPagina("Próxima página");
             }
 
+            // Envio do ficheiro para Model
             public void SubmeterFicheiro()
             {
                 var dados = model.RecolherDadosFicheiro();
@@ -53,6 +57,7 @@ namespace Application
                 view.OutputDados(dadosProcessados);
             }
 
+            // Fecho do programa
             public void AcionarFim()
             {
                 view.MensagemSaida();
