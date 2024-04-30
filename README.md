@@ -8,11 +8,11 @@
 
 Sérgio Rosa - líder 
 
-Rui Baptista - desenvolvedor 
+Rui Baptista - desenvolvedor - 'Model.cs'
 
-João Rodrigues - desenvolvedor 
+João Rodrigues - desenvolvedor - 'Controller.cs'
 
-Sérgio Ribeiro - desenvolvedor 
+Sérgio Ribeiro - desenvolvedor - 'View.cs'
 
 Fernando Santo - verificador
 
@@ -43,4 +43,8 @@ assim uma base sólida para a definição de estratégias e planos de desenvolvi
 
 - Desenvolvimento de funcionalidades para a importação de dados e visualização gráfica das projeções financeiras.
 
+## Tecnologias:
 
+- C# (.NET 8)
+- ML.NET
+- Visual Studio 2022
