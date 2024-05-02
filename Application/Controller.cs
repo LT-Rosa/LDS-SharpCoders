@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Application
 {
@@ -19,6 +20,13 @@ namespace Application
             public event NavigationHandler OnPreviousPage;
             public event NavigationHandler OnNextPage;
 
+            public Controller()
+            {
+                model = new Model();
+                view = new View(model);
+            }
+
+
             // START DO PROGRAMA
             public void IniciarPrograma()
             {
@@ -32,14 +40,13 @@ namespace Application
             {
                 // Simulação de carregar o arquivo
                 bool carregouComSucesso = true; // Simulação de sucesso ao carregar o arquivo
- 
+
                 if (carregouComSucesso)
                 {
-                    view.JanelaCarregarFicheiro();
-                    view.ApresentaMensagemAguardar();
+                    //  view.JanelaCarregarFicheiro();
+                    //   view.ApresentaMensagemAguardar();
 
-                    var dados = model.RecolherDadosFicheiro();
-                    view.PrevisualizarFicheiro(dados);
+                    SubmeterFicheiro(new List<string> { "Dados do arquivo" });
                 }
                 else
                 {
@@ -75,11 +82,11 @@ namespace Application
 
             // SUBMIÇÃO DE FICHEIRO -> MODEL
             // Envio do ficheiro para Model
-            public void SubmeterFicheiro()
+            public void SubmeterFicheiro(List<string> dados)
             {
-                var dados = model.RecolherDadosFicheiro();
-                var dadosProcessados = model.ProcessarDadosAPI(dados);
-                view.OutputDados(dadosProcessados);
+                // var dados = model.RecolherDadosFicheiro();
+                model.RecolherDadosFicheiro(dados);
+                //  view.OutputDados(dadosProcessados);
             }
 
             // FIM DO PROGRAMA
