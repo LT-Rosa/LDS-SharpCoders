@@ -4,13 +4,22 @@ namespace Application
 {
     namespace MainController
     {
-  
+
         // Controller
+
+        // Delegado para nagevação entre páginas
+        public delegate void NavigationHandler(string message);
+
         class Controller
         {
             readonly View view;
             readonly Model model;
 
+            // Eventos do delegado
+            public event NavigationHandler OnPreviousPage;
+            public event NavigationHandler OnNextPage;
+
+            // START DO PROGRAMA
             public void IniciarPrograma()
             {
                 view.AcionarInterface();
@@ -18,6 +27,7 @@ namespace Application
             }
 
 
+            //CARREGAMENTO DOS DADOS DO FICHEIRO
             public void CarregaFicheiro()
             {
                 // Simulação de carregar o arquivo
@@ -37,6 +47,20 @@ namespace Application
                 }
             }
 
+            // DELEGADOS
+            private void RaisePreviousPage()
+            {
+                // Disparando o evento de página anterior
+                OnPreviousPage?.Invoke("Página anterior");
+            }
+
+            private void RaiseNextPage()
+            {
+                // Disparando o evento de próxima página
+                OnNextPage?.Invoke("Próxima página");
+            }
+
+            // NAVEGAÇÃO NAS PÁGINAS
             //Envio de mensagem de página anterior para view
             public void NavegarPaginaAnterior()
             {
@@ -49,6 +73,7 @@ namespace Application
                 view.MostraPagina("Próxima página");
             }
 
+            // SUBMIÇÃO DE FICHEIRO -> MODEL
             // Envio do ficheiro para Model
             public void SubmeterFicheiro()
             {
@@ -57,6 +82,7 @@ namespace Application
                 view.OutputDados(dadosProcessados);
             }
 
+            // FIM DO PROGRAMA
             // Fecho do programa
             public void AcionarFim()
             {
