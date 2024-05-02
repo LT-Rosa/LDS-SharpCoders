@@ -7,18 +7,37 @@ namespace Application
     // Model
     public class Model
     {
-        public List<string> RecolherDadosFicheiro()
+        //Events + Handlers
+        //public event EventHandler NotificaDadosFicheiroRecolhidos;
+        //public event EventHandler NotficaDadosAPIProcessados;
+
+        public delegate void ProcessarDadosApiEventHandler(List<string> Dados);
+        public event ProcessarDadosApiEventHandler ProcessarDadosApiResult;
+
+        public Model()
+        {
+            //  ProcessarDadosApiEventHandler ProcessarDadosApiResult = new ProcessarDadosApiEventHandler(dados);
+        }
+
+
+        public void RecolherDadosFicheiro(List<string> dados)
         {
             // Simulação da recolha de dados do ficheiro
             Console.WriteLine("Recuperando dados do arquivo...");
-            return new List<string> { "Dados do arquivo" };
+            var resultado = new List<string> { "Dados do arquivo" };
+
+            ProcessarDadosAPI(resultado);
         }
 
-        public List<string> ProcessarDadosAPI(List<string> dados)
+
+        private void ProcessarDadosAPI(List<string> dados)
         {
             // Simulação do processamento dos dados pela API
             Console.WriteLine("Processando dados pela API...");
-            return dados;
+
+
+            ProcessarDadosApiResult?.Invoke(dados);
+            //return dados;
         }
     }
 }
