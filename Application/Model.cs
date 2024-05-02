@@ -35,7 +35,6 @@ namespace Application
             // Simulação do processamento dos dados pela API
             Console.WriteLine("Processando dados pela API...");
 
-
             ProcessarDadosApiResult?.Invoke(dados);
             //return dados;
         }
