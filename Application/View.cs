@@ -5,6 +5,14 @@ namespace Application
 {
     public class View
     {
+        readonly Model model;
+
+        public View(Model _model)
+        {
+            model = _model;
+            model.ProcessarDadosApiResult += OutputDados; // evento para output dos dados processados
+        }
+
         public void AcionarInterface()
         {
             // Simulação de acionar a interface
@@ -53,12 +61,34 @@ namespace Application
 
         public void OutputDados(List<string> dadosProcessados)
         {
+            try
+            {
+                if (dadosProcessados != null && dadosProcessados.Count > 0)
+                {
+                    Console.WriteLine("Output dos dados processados:");
+                    //mostraJanelaLista(lista);
+                }
+                else
+                {
+                    Console.WriteLine("Erro: Lista vazia");
+                    //mostraJanelaDeErro();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro: Lista vazia");
+                // mostraJanelaDeErro();
+            }
+
+
+
             // Simulação de saída dos dados processados
+            /*
             Console.WriteLine("Output dos dados processados:");
             foreach (var dado in dadosProcessados)
             {
                 Console.WriteLine(dado);
-            }
+            }*/
         }
 
         public void MensagemSaida()
