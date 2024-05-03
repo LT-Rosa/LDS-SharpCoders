@@ -89,8 +89,7 @@ namespace Application
                 //  view.OutputDados(dadosProcessados);
             }
 
-            // FIM DO PROGRAMA
-            // Fecho do programa
+            // FECHAR PROGRAMA
             public void AcionarFim()
             {
                 view.MensagemSaida();
