@@ -7,10 +7,16 @@ namespace Application
     {
         readonly Model model;
 
+        public delegate void SubmeterFicheiroEventHandler(List<string> Dados); // Delegado para submeter o arquivo
+        public event SubmeterFicheiroEventHandler SubmeterFicheiro; // Evento para submeter o arquivo
+
+        List<string> Dados;
+
         public View(Model _model)
         {
+            // Inicializa o model
             model = _model;
-            model.ProcessarDadosApiResult += OutputDados; // evento para output dos dados processados
+            model.ProcessarDadosApiResult += OutputDados; // Delegado para processar os dados
         }
 
         public void AcionarInterface()
@@ -59,6 +65,13 @@ namespace Application
             Console.WriteLine($"Mostrando página: {pagina}");
         }
 
+
+        public void BotaoSubmeterClicado()
+        {
+            SubmeterFicheiro?.Invoke(Dados);
+        }
+
+
         public void OutputDados(List<string> dadosProcessados)
         {
             try
@@ -77,9 +90,8 @@ namespace Application
             catch (Exception ex)
             {
                 Console.WriteLine("Erro: Lista vazia");
-                // mostraJanelaDeErro();
+               // mostraJanelaDeErro();
             }
-
 
 
             // Simulação de saída dos dados processados
