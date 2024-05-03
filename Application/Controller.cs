@@ -90,7 +90,6 @@ namespace Application
             }
 
             // FIM DO PROGRAMA
-            // Fecho do programa
             public void AcionarFim()
             {
                 view.MensagemSaida();
