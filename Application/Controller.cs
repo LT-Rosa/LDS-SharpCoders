@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Application
 {
@@ -41,6 +42,46 @@ namespace Application
                 // Simulação de carregar o arquivo
                 bool carregouComSucesso = true; // Simulação de sucesso ao carregar o arquivo
 
+                // Leitura do ficheiro completo (caso se venha a apliar a seccionação do ficheiro requer adaptação)
+                string line;
+                List<string> dadosFicheiro = new List<string>(); // Inicializar a lista corretamente
+                try
+                {
+                    // Passar a localização do ficheiro para o StreamReader
+                    StreamReader sr = new StreamReader("C:\\Sample.txt");
+                    // Ler a primeira linha do ficheiro
+                    line = sr.ReadLine();
+                    // Ler linha a linha até terminar o ficheiro
+                    while (line != null)
+                    {
+                        // Adicionar a linha à lista dadosFicheiro
+                        dadosFicheiro.Add(line);
+                        // Ler a próxima linha
+                        line = sr.ReadLine();
+                    }
+                    // Fechar o ficheiro
+                    sr.Close();
+                    //  ----------------------- DEBUG ---------------------------
+                    foreach (string s in dadosFicheiro)
+                    {
+                        Console.WriteLine(s);
+                    }
+                    // ----------------------------------------------------------
+                    Console.ReadLine();
+
+                    // Acionar a View
+                    //  view.JanelaCarregarFicheiro();
+                    //   view.ApresentaMensagemAguardar();
+
+                    SubmeterFicheiro(dadosFicheiro);// new List<string> { "Dados do arquivo" }
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Falha ao carregar o ficheiro: " + e.Message);
+                }
+
+                /*  OLD
                 if (carregouComSucesso)
                 {
                     //  view.JanelaCarregarFicheiro();
@@ -52,6 +93,7 @@ namespace Application
                 {
                     view.FalhaCarregarFicheiro();
                 }
+                */
             }
 
             // DELEGADOS
