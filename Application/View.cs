@@ -59,12 +59,20 @@ namespace Application
         public void PrevisualizarFicheiro(List<FinancialData> dados)
         {
             // Simulação de pré-visualização do arquivo
-            Console.WriteLine("Pré-visualizando arquivo:");
-            formMain.
+            // Console.WriteLine("Pré-visualizando arquivo:");
+            // formMain.
+            // foreach (var dado in dados)
+            // {
+            //     Console.WriteLine(dado);
+            // }
+            formMain.dataGridView1.Columns.Add("Revenue", "Revenue");
+            formMain.dataGridView1.Columns.Add("Expenses", "Expenses");
+            formMain.dataGridView1.Columns.Add("Profit", "Profit");
             foreach (var dado in dados)
             {
-                Console.WriteLine(dado);
-            }
+                formMain.dataGridView1.Rows.Add(dado.Revenue, dado.Expenses, dado.Profit);
+            }          
+
         }
 
         public void MostraPagina(string pagina)
