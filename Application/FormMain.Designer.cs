@@ -57,21 +57,23 @@
             // 
             // BtnBeforePage
             // 
-            BtnBeforePage.Location = new System.Drawing.Point(12, 363);
+            BtnBeforePage.Location = new System.Drawing.Point(12, 345);
             BtnBeforePage.Name = "BtnBeforePage";
             BtnBeforePage.Size = new System.Drawing.Size(121, 23);
             BtnBeforePage.TabIndex = 2;
             BtnBeforePage.Text = "Pagina Anterior";
             BtnBeforePage.UseVisualStyleBackColor = true;
+            BtnBeforePage.Click += BtnBeforePage_Click;
             // 
             // BtnNextPage
             // 
-            BtnNextPage.Location = new System.Drawing.Point(12, 403);
+            BtnNextPage.Location = new System.Drawing.Point(12, 383);
             BtnNextPage.Name = "BtnNextPage";
             BtnNextPage.Size = new System.Drawing.Size(121, 23);
             BtnNextPage.TabIndex = 3;
             BtnNextPage.Text = "Pagina Seguinte";
             BtnNextPage.UseVisualStyleBackColor = true;
+            BtnNextPage.Click += BtnNextPage_Click;
             // 
             // dataGridView1
             // 

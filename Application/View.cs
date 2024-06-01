@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Application
 {
@@ -65,12 +64,17 @@ namespace Application
             // {
             //     Console.WriteLine(dado);
             // }
+            int count = 0;
             formMain.dataGridView1.Columns.Add("Revenue", "Revenue");
             formMain.dataGridView1.Columns.Add("Expenses", "Expenses");
             formMain.dataGridView1.Columns.Add("Profit", "Profit");
+
             foreach (var dado in dados)
             {
+                if (count == 10)
+                    break;
                 formMain.dataGridView1.Rows.Add(dado.Revenue.ToString("0.00"), dado.Expenses.ToString("0.00"), dado.Profit.ToString("0.00"));
+                count++;
             }          
 
         }
@@ -179,6 +183,27 @@ namespace Application
                     var prediction = model.Predict(data);
                     Console.WriteLine($"Revenue: {data.Revenue}, Expenses: {data.Expenses}, Predicted Profit: {prediction.Profit}");
                 }
+        }
+
+        public void MostrarPaginaAnterior() 
+        {
+            if (paginaatual > 0)
+            {
+                paginaatual--;
+                //MostraPagina();
+            }
+            // Simulação de clique no botão de página anterior
+            Console.WriteLine("Botão de página anterior clicado...");
+        }
+        public void MostrarPaginaSeguinte()
+        {
+            if (paginaatual > 0)
+            {
+                paginaatual--;
+                //MostraPagina();
+            }
+            // Simulação de clique no botão de página anterior
+            Console.WriteLine("Botão de página anterior clicado...");
         }
     }
 }
