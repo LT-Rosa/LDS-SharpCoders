@@ -11,10 +11,10 @@ namespace Application
         readonly Model model;
 
         FormMain formMain;
-        public int paginaatual=1; // Página atual
-        public int totalpaginas=0; // Total de páginas
+        public int paginaatual=1;
+        public int totalpaginas=0;
 
-        public int numeroregistrosporpagina = 20; // Número de registros por página
+        public int numeroregistrosporpagina = 20;
         List<FinancialData> dataList = new ();
         public delegate void SubmeterFicheiroEventHandler(List<string> Dados); // Delegado para submeter o arquivo
         public event SubmeterFicheiroEventHandler SubmeterFicheiro; // Evento para submeter o arquivo
@@ -28,25 +28,28 @@ namespace Application
 
         public void AcionarInterface()
         {
-            // Aciona a interface gráfica
+            // Simulação de acionar a interface
+            // Console.WriteLine("Acionando interface...");
             formMain = new FormMain(this);
         }
 
         public void ApresentarJanela()
         {
-            // Apresenta a janela principal
+            // Simulação de apresentar a janela
+            // Console.WriteLine("Apresentando janela...");
             System.Windows.Forms.Application.Run(formMain);
         }
 
         public void FalhaCarregarFicheiro()
         {
-            // Mensagem de falha ao carregar o arquivo
+            // Simulação de falha ao carregar o arquivo
             Console.WriteLine("Falha ao carregar o arquivo!");
         }
 
         public void JanelaCarregarFicheiro()
         {
-            // Aciona a janela de carregar arquivo
+            // Simulação de janela de carregar arquivo
+            // Console.WriteLine("Janela de carregar arquivo aberta...");
             OpenFile();
         }
 
@@ -58,7 +61,13 @@ namespace Application
 
         public void PrevisualizarFicheiro(List<FinancialData> dados, int totalregistros)
         {
-            // Previsualiza o arquivo carregado
+            // Simulação de pré-visualização do arquivo
+            // Console.WriteLine("Pré-visualizando arquivo:");
+            // formMain.
+            // foreach (var dado in dados)
+            // {
+            //     Console.WriteLine(dado);
+            // }
             totalpaginas = totalregistros / numeroregistrosporpagina;
             if (totalregistros % numeroregistrosporpagina > 0)
                 totalpaginas++;
@@ -78,7 +87,7 @@ namespace Application
 
         public void MostraPagina(List<FinancialData> dados)
         {
-            // Mostra a página atual
+            // Simulação de mostrar a página
             Console.WriteLine($"Mostrando página: {paginaatual}");
             formMain.dataGridView1.Rows.Clear();
             AtualizaPagina();
