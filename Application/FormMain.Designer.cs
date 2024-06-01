@@ -33,6 +33,7 @@
             BtnBeforePage = new System.Windows.Forms.Button();
             BtnNextPage = new System.Windows.Forms.Button();
             dataGridView1 = new System.Windows.Forms.DataGridView();
+            lblPages = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -57,7 +58,8 @@
             // 
             // BtnBeforePage
             // 
-            BtnBeforePage.Location = new System.Drawing.Point(12, 345);
+            BtnBeforePage.Enabled = false;
+            BtnBeforePage.Location = new System.Drawing.Point(12, 450);
             BtnBeforePage.Name = "BtnBeforePage";
             BtnBeforePage.Size = new System.Drawing.Size(121, 23);
             BtnBeforePage.TabIndex = 2;
@@ -67,7 +69,8 @@
             // 
             // BtnNextPage
             // 
-            BtnNextPage.Location = new System.Drawing.Point(12, 383);
+            BtnNextPage.Enabled = false;
+            BtnNextPage.Location = new System.Drawing.Point(12, 499);
             BtnNextPage.Name = "BtnNextPage";
             BtnNextPage.Size = new System.Drawing.Size(121, 23);
             BtnNextPage.TabIndex = 3;
@@ -77,17 +80,33 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new System.Drawing.Point(139, 22);
+            dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            dataGridView1.Enabled = false;
+            dataGridView1.Location = new System.Drawing.Point(154, 22);
+            dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new System.Drawing.Size(649, 416);
+            dataGridView1.ReadOnly = true;
+            dataGridView1.Size = new System.Drawing.Size(649, 525);
             dataGridView1.TabIndex = 4;
+            // 
+            // lblPages
+            // 
+            lblPages.AutoSize = true;
+            lblPages.Location = new System.Drawing.Point(45, 242);
+            lblPages.Name = "lblPages";
+            lblPages.Size = new System.Drawing.Size(48, 15);
+            lblPages.TabIndex = 5;
+            lblPages.Text = "Páginas";
             // 
             // FormMain
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(824, 459);
+            ClientSize = new System.Drawing.Size(824, 574);
+            Controls.Add(lblPages);
             Controls.Add(dataGridView1);
             Controls.Add(BtnNextPage);
             Controls.Add(BtnBeforePage);
@@ -97,6 +116,7 @@
             Text = "Main";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -106,5 +126,6 @@
         public System.Windows.Forms.Button BtnBeforePage;
         public System.Windows.Forms.Button BtnNextPage;
         public System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.Label lblPages;
     }
 }

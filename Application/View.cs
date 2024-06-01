@@ -11,7 +11,11 @@ namespace Application
         readonly Model model;
 
         FormMain formMain;
-        public int paginaatual=0;
+        public int paginaatual=1;
+        public int totalpaginas=0;
+
+        public int numeroregistrosporpagina = 20;
+        List<FinancialData> dataList = new ();
         public delegate void SubmeterFicheiroEventHandler(List<string> Dados); // Delegado para submeter o arquivo
         public event SubmeterFicheiroEventHandler SubmeterFicheiro; // Evento para submeter o arquivo
 
@@ -55,7 +59,7 @@ namespace Application
             Console.WriteLine("Aguarde enquanto o arquivo é carregado...");
         }
 
-        public void PrevisualizarFicheiro(List<FinancialData> dados)
+        public void PrevisualizarFicheiro(List<FinancialData> dados, int totalregistros)
         {
             // Simulação de pré-visualização do arquivo
             // Console.WriteLine("Pré-visualizando arquivo:");
@@ -64,25 +68,35 @@ namespace Application
             // {
             //     Console.WriteLine(dado);
             // }
-            int count = 0;
+            totalpaginas = totalregistros / numeroregistrosporpagina;
+            if (totalregistros % numeroregistrosporpagina > 0)
+                totalpaginas++;
+            if (totalpaginas > 1)
+                formMain.BtnNextPage.Enabled = true;
+            formMain.dataGridView1.Rows.Clear();
+            formMain.dataGridView1.Columns.Clear();
+            paginaatual = 1;
+
             formMain.dataGridView1.Columns.Add("Revenue", "Revenue");
             formMain.dataGridView1.Columns.Add("Expenses", "Expenses");
             formMain.dataGridView1.Columns.Add("Profit", "Profit");
 
-            foreach (var dado in dados)
-            {
-                if (count == 10)
-                    break;
-                formMain.dataGridView1.Rows.Add(dado.Revenue.ToString("0.00"), dado.Expenses.ToString("0.00"), dado.Profit.ToString("0.00"));
-                count++;
-            }          
+            MostraPagina(dados);
 
         }
 
-        public void MostraPagina(string pagina)
+        public void MostraPagina(List<FinancialData> dados)
         {
             // Simulação de mostrar a página
-            Console.WriteLine($"Mostrando página: {pagina}");
+            Console.WriteLine($"Mostrando página: {paginaatual}");
+            formMain.dataGridView1.Rows.Clear();
+            AtualizaPagina();
+            foreach (var dado in dados)
+            {
+                if (dados.IndexOf(dado) >= (paginaatual - 1) * numeroregistrosporpagina && dados.IndexOf(dado) < paginaatual * numeroregistrosporpagina)
+                    formMain.dataGridView1.Rows.Add(dado.Revenue.ToString("0.00"), dado.Expenses.ToString("0.00"), dado.Profit.ToString("0.00"));
+
+            }
         }
 
 
@@ -127,6 +141,8 @@ namespace Application
 
         public void OpenFile()
         {
+            
+            int totalregistros = 0;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = "c:\\";
@@ -137,7 +153,7 @@ namespace Application
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     var filePath = openFileDialog.FileName;
-                    List<FinancialData> dataList = new List<FinancialData>();
+                    dataList = new List<FinancialData>();
 
                     using (StreamReader reader = new StreamReader(filePath))
                     {
@@ -160,6 +176,7 @@ namespace Application
                                     Expenses = float.Parse(values[1].Replace(".", ",")),
                                     Profit = float.Parse(values[2].Replace(".", ","))
                                 };
+                                totalregistros++;
                             }
                             catch (Exception e)
                             {
@@ -168,8 +185,7 @@ namespace Application
                             dataList.Add(data);
                         }
                     }
-
-                    PrevisualizarFicheiro(dataList);
+                    PrevisualizarFicheiro(dataList, totalregistros);
                 }
             }
         }
@@ -188,22 +204,36 @@ namespace Application
         public void MostrarPaginaAnterior() 
         {
             if (paginaatual > 0)
-            {
                 paginaatual--;
-                //MostraPagina();
-            }
+
+            //MostraPagina();
+            if (paginaatual == 0)
+                    formMain.BtnBeforePage.Enabled = false;
+            formMain.BtnNextPage.Enabled = true;
+            MostraPagina(dataList);
             // Simulação de clique no botão de página anterior
             Console.WriteLine("Botão de página anterior clicado...");
         }
         public void MostrarPaginaSeguinte()
         {
-            if (paginaatual > 0)
+            if (paginaatual < totalpaginas)
             {
-                paginaatual--;
-                //MostraPagina();
+                paginaatual++;
+
             }
+            if (paginaatual == totalpaginas)
+                    formMain.BtnNextPage.Enabled = false;
+            formMain.BtnBeforePage.Enabled = true;
+            MostraPagina(dataList);
             // Simulação de clique no botão de página anterior
             Console.WriteLine("Botão de página anterior clicado...");
+        }
+
+        private void AtualizaPagina()
+        {
+            // Simulação de atualizar a página
+            formMain.lblPages.Text = "Página \n" + paginaatual + "/" + totalpaginas;
+            Console.WriteLine("Atualizando página...");
         }
     }
 }

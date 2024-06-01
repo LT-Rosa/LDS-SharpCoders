@@ -116,19 +116,6 @@ namespace Application
                 OnNextPage?.Invoke("Próxima página");
             }
 
-            // NAVEGAÇÃO NAS PÁGINAS
-            //Envio de mensagem de página anterior para view
-            public void NavegarPaginaAnterior()
-            {
-                view.MostraPagina("Página anterior");
-            }
-
-            //Envio de mensagem de proxima página para view
-            public void NavegarProximaPagina()
-            {
-                view.MostraPagina("Próxima página");
-            }
-
             // SUBMIÇÃO DE FICHEIRO -> MODEL
             // Envio do ficheiro para Model
             public void SubmeterFicheiro(List<string> dados)
