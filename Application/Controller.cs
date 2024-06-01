@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using static Application.View;
 
 namespace Application
 {
@@ -17,7 +18,7 @@ namespace Application
             public float Profit { get; set; }
         }
 
-        class Controller
+        class Controller : IController
         {
             readonly View view;
             readonly Model model;
@@ -133,5 +134,6 @@ namespace Application
             }
 
         }
+
     }
 }

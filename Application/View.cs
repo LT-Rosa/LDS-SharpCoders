@@ -6,8 +6,9 @@ using System.Windows.Forms;
 
 namespace Application
 {
-    public class View
+    public class View : IView
     {
+
         readonly Model model;
 
         FormMain formMain;
@@ -19,12 +20,19 @@ namespace Application
         public delegate void SubmeterFicheiroEventHandler(List<FinancialData> datalist); // Delegado para submeter o arquivo
         public event SubmeterFicheiroEventHandler SubmeterFicheiro; // Evento para submeter o arquivo
 
+        public delegate void FileLoadingErrorHandler(string message);
+        public event FileLoadingErrorHandler FileLoadingError;
+
+        public delegate void DataProcessedHandler(List<string> processedData);
+        public event DataProcessedHandler DataProcessed;
+
         public View(Model _model)
         {
             // Inicializa o model
             model = _model;
             model.ProcessarDadosApiResult += OutputDados; // Delegado para processar os dados
         }
+
 
         public void AcionarInterface()
         {
@@ -181,7 +189,7 @@ namespace Application
                             }
                             catch (Exception e)
                             {
-                                Console.WriteLine("Erro ao processar linha: " + e.Message);
+                                FileLoadingError?.Invoke("Erro carregando as linhas: " + e.Message);
                             }
                             dataList.Add(data);
                         }

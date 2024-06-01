@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Application
 {
-    public class Model
+    public class Model : IModel
     {
         public delegate void ProcessarDadosApiEventHandler(List<string> Dados);
         public event ProcessarDadosApiEventHandler ProcessarDadosApiResult;
