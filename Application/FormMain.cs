@@ -26,7 +26,15 @@ namespace Application
             view.OpenFile();
         }
 
-        
+        private void BtnBeforePage_Click(object sender, EventArgs e)
+        {
+            view.MostrarPaginaAnterior();
+        }
+
+        private void BtnNextPage_Click(object sender, EventArgs e)
+        {
+            view.MostrarPaginaSeguinte();
+        }
     }
 
 }
