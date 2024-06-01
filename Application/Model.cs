@@ -21,7 +21,7 @@ namespace Application
             _mlContext = new MLContext();
         }
 
-        public void RecolherDadosFicheiro(List<string> dados)
+        public void RecolherDadosFicheiro(List<FinancialData> dados)
         {
             Console.WriteLine("Recuperando dados do arquivo...");
             var resultado = new List<string> { "Dados do arquivo" };

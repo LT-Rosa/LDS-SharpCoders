@@ -16,7 +16,7 @@ namespace Application
 
         public int numeroregistrosporpagina = 20;
         List<FinancialData> dataList = new ();
-        public delegate void SubmeterFicheiroEventHandler(List<string> Dados); // Delegado para submeter o arquivo
+        public delegate void SubmeterFicheiroEventHandler(List<FinancialData> datalist); // Delegado para submeter o arquivo
         public event SubmeterFicheiroEventHandler SubmeterFicheiro; // Evento para submeter o arquivo
 
         public View(Model _model)
@@ -46,18 +46,18 @@ namespace Application
             Console.WriteLine("Falha ao carregar o arquivo!");
         }
 
-        public void JanelaCarregarFicheiro()
-        {
-            // Simulação de janela de carregar arquivo
-            // Console.WriteLine("Janela de carregar arquivo aberta...");
-            OpenFile();
-        }
+        //public void JanelaCarregarFicheiro()
+        //{
+        //    // Simulação de janela de carregar arquivo
+        //    // Console.WriteLine("Janela de carregar arquivo aberta...");
+        //    OpenFile();
+        //}
 
-        public void ApresentaMensagemAguardar()
-        {
-            // Simulação de mensagem de aguardar
-            Console.WriteLine("Aguarde enquanto o arquivo é carregado...");
-        }
+        //public void ApresentaMensagemAguardar()
+        //{
+        //    // Simulação de mensagem de aguardar
+        //    Console.WriteLine("Aguarde enquanto o arquivo é carregado...");
+        //}
 
         public void PrevisualizarFicheiro(List<FinancialData> dados, int totalregistros)
         {
@@ -103,7 +103,7 @@ namespace Application
 
         public void BotaoSubmeterClicado()
         {
-            SubmeterFicheiro?.Invoke(new List<string>());
+            SubmeterFicheiro?.Invoke(dataList);
         }
 
 
@@ -135,10 +135,10 @@ namespace Application
             Console.WriteLine("Encerrando o programa...");
         }
 
-        internal void BotaoLerFicheiroClicado()
-        {
-            JanelaCarregarFicheiro();
-        }
+        //internal void BotaoLerFicheiroClicado()
+        //{
+        //    JanelaCarregarFicheiro();
+        //}
 
         public void OpenFile()
         {

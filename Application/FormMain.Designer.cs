@@ -55,6 +55,7 @@
             BtnSubmit.TabIndex = 1;
             BtnSubmit.Text = "Enviar Ficheiro";
             BtnSubmit.UseVisualStyleBackColor = true;
+            BtnSubmit.Click += BtnSubmit_Click;
             // 
             // BtnBeforePage
             // 
