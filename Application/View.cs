@@ -207,7 +207,7 @@ namespace Application
                 paginaatual--;
 
             //MostraPagina();
-            if (paginaatual == 0)
+            if (paginaatual == 1)
                     formMain.BtnBeforePage.Enabled = false;
             formMain.BtnNextPage.Enabled = true;
             MostraPagina(dataList);
