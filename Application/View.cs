@@ -12,6 +12,8 @@ namespace Application
 
         FormMain formMain;
         public int paginaatual=0;
+        public int totalpaginas=0;
+        public int totalregistros=0;
         public delegate void SubmeterFicheiroEventHandler(List<string> Dados); // Delegado para submeter o arquivo
         public event SubmeterFicheiroEventHandler SubmeterFicheiro; // Evento para submeter o arquivo
 
@@ -160,6 +162,7 @@ namespace Application
                                     Expenses = float.Parse(values[1].Replace(".", ",")),
                                     Profit = float.Parse(values[2].Replace(".", ","))
                                 };
+                                totalregistros++;
                             }
                             catch (Exception e)
                             {
@@ -168,7 +171,11 @@ namespace Application
                             dataList.Add(data);
                         }
                     }
+                    totalpaginas = totalregistros / 10;
+                    if (totalpaginas>1)
+                        formMain.BtnNextPage.Enabled = true;
 
+                    formMain.lblPages.Text = "Página \n" + (paginaatual+1) + "/" + totalpaginas;
                     PrevisualizarFicheiro(dataList);
                 }
             }
@@ -190,6 +197,10 @@ namespace Application
             if (paginaatual > 0)
             {
                 paginaatual--;
+                if (paginaatual == 0)
+                    formMain.BtnBeforePage.Enabled = false;
+                formMain.BtnNextPage.Enabled = true;
+                formMain.lblPages.Text = "Página \n" + (paginaatual + 1) + "/" + totalpaginas;
                 //MostraPagina();
             }
             // Simulação de clique no botão de página anterior
@@ -197,9 +208,13 @@ namespace Application
         }
         public void MostrarPaginaSeguinte()
         {
-            if (paginaatual > 0)
+            if (paginaatual < totalpaginas)
             {
-                paginaatual--;
+                paginaatual++;
+                formMain.BtnBeforePage.Enabled = true;
+                if (paginaatual == totalpaginas)
+                    formMain.BtnNextPage.Enabled = false;
+                formMain.lblPages.Text = "Página \n" + (paginaatual + 1) + "/" + totalpaginas;
                 //MostraPagina();
             }
             // Simulação de clique no botão de página anterior
