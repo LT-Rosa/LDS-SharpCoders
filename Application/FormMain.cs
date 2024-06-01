@@ -23,10 +23,10 @@ namespace Application
 
         private void BtnOpen_Click(object sender, EventArgs e)
         {
-            openFile();
+            OpenFile();
         }
 
-        public void openFile()
+        public void OpenFile()
         {
   
             using (OpenFileDialog openFileDialog = new OpenFileDialog())

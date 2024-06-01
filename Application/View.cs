@@ -45,7 +45,7 @@ namespace Application
         {
             // Simulação de janela de carregar arquivo
             // Console.WriteLine("Janela de carregar arquivo aberta...");
-            formMain.openFile();
+            formMain.OpenFile();
         }
 
         public void ApresentaMensagemAguardar()
