@@ -147,7 +147,7 @@ namespace Application
                                 isFirstLine = false;
                                 continue;
                             }
-                            var values = line.Split(',');
+                            var values = line.Split(';');
                             try { 
                                 data = new FinancialData
                                 {
