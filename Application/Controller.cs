@@ -12,7 +12,7 @@ namespace Application
         // Delegado para nagevação entre páginas
         public delegate void NavigationHandler(string message);
 
-                    public class FinancialData
+        public class FinancialData
             {
                 public float Revenue { get; set; }
                 public float Expenses { get; set; }

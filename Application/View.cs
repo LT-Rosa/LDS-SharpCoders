@@ -147,13 +147,13 @@ namespace Application
                                 isFirstLine = false;
                                 continue;
                             }
-                            var values = line.Split(';');
+                            var values = line.Split(',');
                             try { 
                                 data = new FinancialData
                                 {
-                                    Revenue = float.Parse(values[0]),
-                                    Expenses = float.Parse(values[1]),
-                                    Profit = float.Parse(values[2])
+                                    Revenue = float.Parse(values[0].Replace(".",",")),
+                                    Expenses = float.Parse(values[1].Replace(".",",")),
+                                    Profit = float.Parse(values[2].Replace(".",","))
                                 };
                             }
                             catch (Exception e)
