@@ -68,6 +68,7 @@ namespace Application
             // {
             //     Console.WriteLine(dado);
             // }
+            formMain.BtnBeforePage.Enabled = false;
             totalpaginas = totalregistros / numeroregistrosporpagina;
             if (totalregistros % numeroregistrosporpagina > 0)
                 totalpaginas++;
