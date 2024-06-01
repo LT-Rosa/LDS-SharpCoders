@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using Application.MainController;
+﻿using Application.MainController;
 using Microsoft.ML;
 using Microsoft.ML.Data;
+using System;
+using System.Collections.Generic;
 
 namespace Application
 {

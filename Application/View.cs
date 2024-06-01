@@ -11,11 +11,11 @@ namespace Application
         readonly Model model;
 
         FormMain formMain;
-        public int paginaatual=1;
-        public int totalpaginas=0;
+        public int paginaatual = 1;
+        public int totalpaginas = 0;
 
         public int numeroregistrosporpagina = 20;
-        List<FinancialData> dataList = new ();
+        List<FinancialData> dataList = new();
         public delegate void SubmeterFicheiroEventHandler(List<FinancialData> datalist); // Delegado para submeter o arquivo
         public event SubmeterFicheiroEventHandler SubmeterFicheiro; // Evento para submeter o arquivo
 
@@ -142,7 +142,7 @@ namespace Application
 
         public void OpenFile()
         {
-            
+
             int totalregistros = 0;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -170,7 +170,7 @@ namespace Application
                             }
                             var values = line.Split(',');
                             try
-                            { 
+                            {
                                 data = new FinancialData
                                 {
                                     Revenue = float.Parse(values[0].Replace(".", ",")),
@@ -193,23 +193,23 @@ namespace Application
 
         public void TrainAndPredictModel(List<FinancialData> dados)
         {
-                model.TrainModel(dados);
-                
-                foreach (var data in dados)
-                {
-                    var prediction = model.Predict(data);
-                    Console.WriteLine($"Revenue: {data.Revenue}, Expenses: {data.Expenses}, Predicted Profit: {prediction.Profit}");
-                }
+            model.TrainModel(dados);
+
+            foreach (var data in dados)
+            {
+                var prediction = model.Predict(data);
+                Console.WriteLine($"Revenue: {data.Revenue}, Expenses: {data.Expenses}, Predicted Profit: {prediction.Profit}");
+            }
         }
 
-        public void MostrarPaginaAnterior() 
+        public void MostrarPaginaAnterior()
         {
             if (paginaatual > 0)
                 paginaatual--;
 
             //MostraPagina();
             if (paginaatual == 1)
-                    formMain.BtnBeforePage.Enabled = false;
+                formMain.BtnBeforePage.Enabled = false;
             formMain.BtnNextPage.Enabled = true;
             MostraPagina(dataList);
             // Simulação de clique no botão de página anterior
@@ -223,7 +223,7 @@ namespace Application
 
             }
             if (paginaatual == totalpaginas)
-                    formMain.BtnNextPage.Enabled = false;
+                formMain.BtnNextPage.Enabled = false;
             formMain.BtnBeforePage.Enabled = true;
             MostraPagina(dataList);
             // Simulação de clique no botão de página anterior

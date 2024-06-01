@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 
 namespace Application
 {
@@ -13,11 +11,11 @@ namespace Application
         public delegate void NavigationHandler(string message);
 
         public class FinancialData
-            {
-                public float Revenue { get; set; }
-                public float Expenses { get; set; }
-                public float Profit { get; set; }
-            }
+        {
+            public float Revenue { get; set; }
+            public float Expenses { get; set; }
+            public float Profit { get; set; }
+        }
 
         class Controller
         {
