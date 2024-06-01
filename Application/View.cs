@@ -1,18 +1,20 @@
-﻿using System;
+﻿using Application.MainController;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Application
 {
     public class View
     {
         readonly Model model;
+        Controller controller;
         FormMain formMain;
 
         public delegate void SubmeterFicheiroEventHandler(List<string> Dados); // Delegado para submeter o arquivo
         public event SubmeterFicheiroEventHandler SubmeterFicheiro; // Evento para submeter o arquivo
-
-        List<string> Dados;
 
         public View(Model _model)
         {
@@ -45,7 +47,7 @@ namespace Application
         {
             // Simulação de janela de carregar arquivo
             // Console.WriteLine("Janela de carregar arquivo aberta...");
-            formMain.OpenFile();
+            OpenFile();
         }
 
         public void ApresentaMensagemAguardar()
@@ -54,10 +56,11 @@ namespace Application
             Console.WriteLine("Aguarde enquanto o arquivo é carregado...");
         }
 
-        public void PrevisualizarFicheiro(List<string> dados)
+        public void PrevisualizarFicheiro(List<FinancialData> dados)
         {
             // Simulação de pré-visualização do arquivo
             Console.WriteLine("Pré-visualizando arquivo:");
+            formMain.
             foreach (var dado in dados)
             {
                 Console.WriteLine(dado);
@@ -73,7 +76,7 @@ namespace Application
 
         public void BotaoSubmeterClicado()
         {
-            SubmeterFicheiro?.Invoke(Dados);
+            SubmeterFicheiro?.Invoke(new List<string>());
         }
 
 
@@ -92,20 +95,11 @@ namespace Application
                     //mostraJanelaDeErro();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Erro: Lista vazia");
-                     //traJanelaDeErro();
+                //traJanelaDeErro();
             }
-
-
-            // Simulação de saída dos dados processados
-            /*
-            Console.WriteLine("Output dos dados processados:");
-            foreach (var dado in dadosProcessados)
-            {
-                Console.WriteLine(dado);
-            }*/
         }
 
         public void MensagemSaida()
@@ -117,6 +111,54 @@ namespace Application
         internal void BotaoLerFicheiroClicado()
         {
             JanelaCarregarFicheiro();
+        }
+
+        public void OpenFile()
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var filePath = openFileDialog.FileName;
+                    List<FinancialData> dataList = new List<FinancialData>();
+
+                    using (StreamReader reader = new StreamReader(filePath))
+                    {
+                        string line;
+                        bool isFirstLine = true; // Add this line
+                        var data =new FinancialData();
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            if (isFirstLine) // Add this block
+                            {
+                                isFirstLine = false;
+                                continue;
+                            }
+                            var values = line.Split(',');
+                            try { 
+                                data = new FinancialData
+                                {
+                                    Revenue = float.Parse(values[0]),
+                                    Expenses = float.Parse(values[1]),
+                                    Profit = float.Parse(values[2])
+                                };
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Erro ao processar linha: " + e.Message);
+                            }
+                            dataList.Add(data);
+                        }
+                    }
+
+                    PrevisualizarFicheiro(dataList);
+                }
+            }
         }
     }
 }
