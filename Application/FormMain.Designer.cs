@@ -99,10 +99,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button BtnOpen;
-        private System.Windows.Forms.Button BtnSubmit;
-        private System.Windows.Forms.Button BtnBeforePage;
-        private System.Windows.Forms.Button BtnNextPage;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.Button BtnOpen;
+        public System.Windows.Forms.Button BtnSubmit;
+        public System.Windows.Forms.Button BtnBeforePage;
+        public System.Windows.Forms.Button BtnNextPage;
+        public System.Windows.Forms.DataGridView dataGridView1;
     }
 }
