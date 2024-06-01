@@ -12,12 +12,31 @@ namespace Application
 {
     public partial class FormMain : Form
     {
-        public FormMain()
+        private View view;
+
+
+        public FormMain(View v)
         {
+            view = v;
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            view.BotaoLerFicheiroClicado();
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBeforePage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNextPage_Click(object sender, EventArgs e)
         {
 
         }

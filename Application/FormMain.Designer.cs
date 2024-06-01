@@ -44,7 +44,7 @@
             btnOpen.TabIndex = 0;
             btnOpen.Text = "Abrir Ficheiro";
             btnOpen.UseVisualStyleBackColor = true;
-            btnOpen.Click += button1_Click;
+            btnOpen.Click += btnOpen_Click;
             // 
             // btnSubmit
             // 
@@ -54,6 +54,7 @@
             btnSubmit.TabIndex = 1;
             btnSubmit.Text = "Enviar Ficheiro";
             btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
             // 
             // btnBeforePage
             // 
@@ -63,6 +64,7 @@
             btnBeforePage.TabIndex = 2;
             btnBeforePage.Text = "Pagina Anterior";
             btnBeforePage.UseVisualStyleBackColor = true;
+            btnBeforePage.Click += btnBeforePage_Click;
             // 
             // btnNextPage
             // 
@@ -72,6 +74,7 @@
             btnNextPage.TabIndex = 3;
             btnNextPage.Text = "Pagina Seguinte";
             btnNextPage.UseVisualStyleBackColor = true;
+            btnNextPage.Click += btnNextPage_Click;
             // 
             // dataGridView1
             // 

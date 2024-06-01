@@ -22,7 +22,8 @@ namespace Application
         public void AcionarInterface()
         {
             // Simulação de acionar a interface
-            Console.WriteLine("Acionando interface...");
+            // Console.WriteLine("Acionando interface...");
+
         }
 
         public void ApresentarJanela()
@@ -40,7 +41,9 @@ namespace Application
         public void JanelaCarregarFicheiro()
         {
             // Simulação de janela de carregar arquivo
-            Console.WriteLine("Janela de carregar arquivo aberta...");
+            // Console.WriteLine("Janela de carregar arquivo aberta...");
+
+
         }
 
         public void ApresentaMensagemAguardar()
@@ -109,5 +112,9 @@ namespace Application
             Console.WriteLine("Encerrando o programa...");
         }
 
+        internal void BotaoLerFicheiroClicado()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
