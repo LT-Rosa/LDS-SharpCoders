@@ -28,53 +28,50 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnOpen = new System.Windows.Forms.Button();
-            btnSubmit = new System.Windows.Forms.Button();
-            btnBeforePage = new System.Windows.Forms.Button();
-            btnNextPage = new System.Windows.Forms.Button();
+            BtnOpen = new System.Windows.Forms.Button();
+            BtnSubmit = new System.Windows.Forms.Button();
+            BtnBeforePage = new System.Windows.Forms.Button();
+            BtnNextPage = new System.Windows.Forms.Button();
             dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // btnOpen
+            // BtnOpen
             // 
-            btnOpen.Location = new System.Drawing.Point(12, 22);
-            btnOpen.Name = "btnOpen";
-            btnOpen.Size = new System.Drawing.Size(121, 23);
-            btnOpen.TabIndex = 0;
-            btnOpen.Text = "Abrir Ficheiro";
-            btnOpen.UseVisualStyleBackColor = true;
-            btnOpen.Click += btnOpen_Click;
+            BtnOpen.Location = new System.Drawing.Point(12, 22);
+            BtnOpen.Name = "BtnOpen";
+            BtnOpen.Size = new System.Drawing.Size(121, 23);
+            BtnOpen.TabIndex = 0;
+            BtnOpen.Text = "Abrir Ficheiro";
+            BtnOpen.UseVisualStyleBackColor = true;
+            BtnOpen.Click += BtnOpen_Click;
             // 
-            // btnSubmit
+            // BtnSubmit
             // 
-            btnSubmit.Location = new System.Drawing.Point(12, 62);
-            btnSubmit.Name = "btnSubmit";
-            btnSubmit.Size = new System.Drawing.Size(121, 23);
-            btnSubmit.TabIndex = 1;
-            btnSubmit.Text = "Enviar Ficheiro";
-            btnSubmit.UseVisualStyleBackColor = true;
-            btnSubmit.Click += btnSubmit_Click;
+            BtnSubmit.Location = new System.Drawing.Point(12, 62);
+            BtnSubmit.Name = "BtnSubmit";
+            BtnSubmit.Size = new System.Drawing.Size(121, 23);
+            BtnSubmit.TabIndex = 1;
+            BtnSubmit.Text = "Enviar Ficheiro";
+            BtnSubmit.UseVisualStyleBackColor = true;
             // 
-            // btnBeforePage
+            // BtnBeforePage
             // 
-            btnBeforePage.Location = new System.Drawing.Point(12, 363);
-            btnBeforePage.Name = "btnBeforePage";
-            btnBeforePage.Size = new System.Drawing.Size(121, 23);
-            btnBeforePage.TabIndex = 2;
-            btnBeforePage.Text = "Pagina Anterior";
-            btnBeforePage.UseVisualStyleBackColor = true;
-            btnBeforePage.Click += btnBeforePage_Click;
+            BtnBeforePage.Location = new System.Drawing.Point(12, 363);
+            BtnBeforePage.Name = "BtnBeforePage";
+            BtnBeforePage.Size = new System.Drawing.Size(121, 23);
+            BtnBeforePage.TabIndex = 2;
+            BtnBeforePage.Text = "Pagina Anterior";
+            BtnBeforePage.UseVisualStyleBackColor = true;
             // 
-            // btnNextPage
+            // BtnNextPage
             // 
-            btnNextPage.Location = new System.Drawing.Point(12, 403);
-            btnNextPage.Name = "btnNextPage";
-            btnNextPage.Size = new System.Drawing.Size(121, 23);
-            btnNextPage.TabIndex = 3;
-            btnNextPage.Text = "Pagina Seguinte";
-            btnNextPage.UseVisualStyleBackColor = true;
-            btnNextPage.Click += btnNextPage_Click;
+            BtnNextPage.Location = new System.Drawing.Point(12, 403);
+            BtnNextPage.Name = "BtnNextPage";
+            BtnNextPage.Size = new System.Drawing.Size(121, 23);
+            BtnNextPage.TabIndex = 3;
+            BtnNextPage.Text = "Pagina Seguinte";
+            BtnNextPage.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -90,10 +87,10 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(824, 459);
             Controls.Add(dataGridView1);
-            Controls.Add(btnNextPage);
-            Controls.Add(btnBeforePage);
-            Controls.Add(btnSubmit);
-            Controls.Add(btnOpen);
+            Controls.Add(BtnNextPage);
+            Controls.Add(BtnBeforePage);
+            Controls.Add(BtnSubmit);
+            Controls.Add(BtnOpen);
             Name = "FormMain";
             Text = "Main";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -102,10 +99,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnOpen;
-        private System.Windows.Forms.Button btnSubmit;
-        private System.Windows.Forms.Button btnBeforePage;
-        private System.Windows.Forms.Button btnNextPage;
+        private System.Windows.Forms.Button BtnOpen;
+        private System.Windows.Forms.Button BtnSubmit;
+        private System.Windows.Forms.Button BtnBeforePage;
+        private System.Windows.Forms.Button BtnNextPage;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

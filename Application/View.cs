@@ -26,17 +26,14 @@ namespace Application
             // Simulação de acionar a interface
             // Console.WriteLine("Acionando interface...");
             formMain = new FormMain(this);
-
-
         }
 
         public void ApresentarJanela()
         {
             // Simulação de apresentar a janela
             // Console.WriteLine("Apresentando janela...");
-            System.Windows.Forms.Application.DoE
-   Main);
-    }
+            System.Windows.Forms.Application.Run(formMain);
+        }
 
         public void FalhaCarregarFicheiro()
         {
@@ -48,8 +45,7 @@ namespace Application
         {
             // Simulação de janela de carregar arquivo
             // Console.WriteLine("Janela de carregar arquivo aberta...");
-
-
+            formMain.openFile();
         }
 
         public void ApresentaMensagemAguardar()
@@ -99,7 +95,7 @@ namespace Application
             catch (Exception ex)
             {
                 Console.WriteLine("Erro: Lista vazia");
-                     traJanelaDeErro();
+                     //traJanelaDeErro();
             }
 
 
@@ -120,7 +116,7 @@ namespace Application
 
         internal void BotaoLerFicheiroClicado()
         {
-            throw new NotImplementedException();
+            JanelaCarregarFicheiro();
         }
     }
 }

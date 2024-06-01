@@ -15,15 +15,20 @@ namespace Application
     {
         private View view;
 
-
         public FormMain(View v)
         {
             view = v;
             InitializeComponent();
         }
 
-        private void btnOpen_Click(object sender, EventArgs e)
+        private void BtnOpen_Click(object sender, EventArgs e)
         {
+            openFile();
+        }
+
+        public void openFile()
+        {
+  
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = "c:\\";
@@ -46,63 +51,8 @@ namespace Application
 
                     view.PrevisualizarFicheiro(lines);
                 }
-
-                //Excel.Application excelApp = new Excel.Application();
-                //excelApp.Visible = false;
-
-                //Excel.Workbook excelBook = excelApp.Workbooks.Open(openFileDialog.FileName);//@"C:\excelFile.xls");
-                //view.PrevisualizarFicheiro(excelBook);
-                //// excelBook.Save();
-                //excelApp.Quit();
             }
-            }
-
-            /*
-
-            var fileContent = string.Empty;
-            var filePath = string.Empty;
-
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    //Get the path of specified file
-                    filePath = openFileDialog.FileName;
-
-                    //Read the contents of the file into a stream
-                    var fileStream = openFileDialog.OpenFile();
-
-                    using (StreamReader reader = new StreamReader(fileStream))
-                    {
-                        fileContent = reader.ReadToEnd();
-                    }
-                }
-            }
-
-            view.PrevisualizarFicheiro(fileContent.Split('\n').ToList());
-            */
-
-
-        }
-
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnBeforePage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnNextPage_Click(object sender, EventArgs e)
-        {
-
         }
     }
+
 }
