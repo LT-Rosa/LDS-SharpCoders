@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Application
 {
@@ -32,8 +33,10 @@ namespace Application
         public void ApresentarJanela()
         {
             // Simulação de apresentar a janela
-            Console.WriteLine("Apresentando janela...");
-        }
+            // Console.WriteLine("Apresentando janela...");
+            System.Windows.Forms.Application.DoE
+   Main);
+    }
 
         public void FalhaCarregarFicheiro()
         {
@@ -96,7 +99,7 @@ namespace Application
             catch (Exception ex)
             {
                 Console.WriteLine("Erro: Lista vazia");
-               // mostraJanelaDeErro();
+                     traJanelaDeErro();
             }
 
 

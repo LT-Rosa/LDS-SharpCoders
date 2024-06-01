@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,14 +33,28 @@ namespace Application
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    Excel.Application excelApp = new Excel.Application();
-                    excelApp.Visible = false;
+                    var filePath = openFileDialog.FileName;
+                    List<string> lines = new List<string>();
+                    using (StreamReader reader = new StreamReader(filePath))
+                    {
+                        string line;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            lines.Add(line);
+                        }
+                    }
 
-                    Excel.Workbook excelBook = excelApp.Workbooks.Open(openFileDialog.FileName);//@"C:\excelFile.xls");
-                    view.PrevisualizarFicheiro(excelBook);
-                    // excelBook.Save();
-                    excelApp.Quit();
+                    view.PrevisualizarFicheiro(lines);
                 }
+
+                //Excel.Application excelApp = new Excel.Application();
+                //excelApp.Visible = false;
+
+                //Excel.Workbook excelBook = excelApp.Workbooks.Open(openFileDialog.FileName);//@"C:\excelFile.xls");
+                //view.PrevisualizarFicheiro(excelBook);
+                //// excelBook.Save();
+                //excelApp.Quit();
+            }
             }
 
             /*
