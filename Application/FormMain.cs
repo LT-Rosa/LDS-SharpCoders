@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Application
 {
-    public partial class Janela_incial : Form
+    public partial class FormMain : Form
     {
-        public Janela_incial()
+        public FormMain()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
