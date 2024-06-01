@@ -12,7 +12,7 @@ namespace Application
         readonly Model model;
 
         FormMain formMain;
-
+        public int paginaatual=0;
         public delegate void SubmeterFicheiroEventHandler(List<string> Dados); // Delegado para submeter o arquivo
         public event SubmeterFicheiroEventHandler SubmeterFicheiro; // Evento para submeter o arquivo
 
@@ -168,6 +168,17 @@ namespace Application
                     PrevisualizarFicheiro(dataList);
                 }
             }
+        }
+
+        public void TrainAndPredictModel(List<FinancialData> dados)
+        {
+                model.TrainModel(dados);
+                
+                foreach (var data in dados)
+                {
+                    var prediction = model.Predict(data);
+                    Console.WriteLine($"Revenue: {data.Revenue}, Expenses: {data.Expenses}, Predicted Profit: {prediction.Profit}");
+                }
         }
     }
 }
