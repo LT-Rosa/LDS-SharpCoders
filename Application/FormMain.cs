@@ -23,7 +23,56 @@ namespace Application
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            view.BotaoLerFicheiroClicado();
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    Excel.Application excelApp = new Excel.Application();
+                    excelApp.Visible = false;
+
+                    Excel.Workbook excelBook = excelApp.Workbooks.Open(openFileDialog.FileName);//@"C:\excelFile.xls");
+                    view.PrevisualizarFicheiro(excelBook);
+                    // excelBook.Save();
+                    excelApp.Quit();
+                }
+            }
+
+            /*
+
+            var fileContent = string.Empty;
+            var filePath = string.Empty;
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    filePath = openFileDialog.FileName;
+
+                    //Read the contents of the file into a stream
+                    var fileStream = openFileDialog.OpenFile();
+
+                    using (StreamReader reader = new StreamReader(fileStream))
+                    {
+                        fileContent = reader.ReadToEnd();
+                    }
+                }
+            }
+
+            view.PrevisualizarFicheiro(fileContent.Split('\n').ToList());
+            */
+
+
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)

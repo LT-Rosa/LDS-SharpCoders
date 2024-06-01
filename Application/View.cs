@@ -6,6 +6,7 @@ namespace Application
     public class View
     {
         readonly Model model;
+        FormMain formMain;
 
         public delegate void SubmeterFicheiroEventHandler(List<string> Dados); // Delegado para submeter o arquivo
         public event SubmeterFicheiroEventHandler SubmeterFicheiro; // Evento para submeter o arquivo
@@ -23,6 +24,8 @@ namespace Application
         {
             // Simulação de acionar a interface
             // Console.WriteLine("Acionando interface...");
+            formMain = new FormMain(this);
+
 
         }
 
