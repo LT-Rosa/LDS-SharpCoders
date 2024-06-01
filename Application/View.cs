@@ -10,7 +10,7 @@ namespace Application
     public class View
     {
         readonly Model model;
-        Controller controller;
+
         FormMain formMain;
 
         public delegate void SubmeterFicheiroEventHandler(List<string> Dados); // Delegado para submeter o arquivo
@@ -70,7 +70,7 @@ namespace Application
             formMain.dataGridView1.Columns.Add("Profit", "Profit");
             foreach (var dado in dados)
             {
-                formMain.dataGridView1.Rows.Add(dado.Revenue, dado.Expenses, dado.Profit);
+                formMain.dataGridView1.Rows.Add(dado.Revenue.ToString("0.00"), dado.Expenses.ToString("0.00"), dado.Profit.ToString("0.00"));
             }          
 
         }
@@ -139,7 +139,7 @@ namespace Application
                     {
                         string line;
                         bool isFirstLine = true; // Add this line
-                        var data =new FinancialData();
+                        var data = new FinancialData();
                         while ((line = reader.ReadLine()) != null)
                         {
                             if (isFirstLine) // Add this block
@@ -148,12 +148,13 @@ namespace Application
                                 continue;
                             }
                             var values = line.Split(',');
-                            try { 
+                            try
+                            { 
                                 data = new FinancialData
                                 {
-                                    Revenue = float.Parse(values[0].Replace(".",",")),
-                                    Expenses = float.Parse(values[1].Replace(".",",")),
-                                    Profit = float.Parse(values[2].Replace(".",","))
+                                    Revenue = float.Parse(values[0].Replace(".", ",")),
+                                    Expenses = float.Parse(values[1].Replace(".", ",")),
+                                    Profit = float.Parse(values[2].Replace(".", ","))
                                 };
                             }
                             catch (Exception e)
