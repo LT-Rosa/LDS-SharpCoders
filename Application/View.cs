@@ -169,5 +169,16 @@ namespace Application
                 }
             }
         }
+
+        public void TrainAndPredictModel(List<FinancialData> dados)
+        {
+                model.TrainModel(dados);
+                
+                foreach (var data in dados)
+                {
+                    var prediction = model.Predict(data);
+                    Console.WriteLine($"Revenue: {data.Revenue}, Expenses: {data.Expenses}, Predicted Profit: {prediction.Profit}");
+                }
+        }
     }
 }
