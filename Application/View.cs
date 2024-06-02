@@ -78,12 +78,12 @@ namespace Application
             // {
             //     Console.WriteLine(dado);
             // }
-            formMain.BtnBeforePage.Enabled = false;
+            formMain.btnBeforePage.Enabled = false;
             totalpaginas = totalregistros / numeroregistrosporpagina;
             if (totalregistros % numeroregistrosporpagina > 0)
                 totalpaginas++;
             if (totalpaginas > 1)
-                formMain.BtnNextPage.Enabled = true;
+                formMain.btnNextPage.Enabled = true;
             formMain.dataGridView1.Rows.Clear();
             formMain.dataGridView1.Columns.Clear();
             paginaatual = 1;
@@ -221,8 +221,8 @@ namespace Application
 
             //MostraPagina();
             if (paginaatual == 1)
-                formMain.BtnBeforePage.Enabled = false;
-            formMain.BtnNextPage.Enabled = true;
+                formMain.btnBeforePage.Enabled = false;
+            formMain.btnNextPage.Enabled = true;
             MostraPagina(dataList);
             // Simulação de clique no botão de página anterior
             Console.WriteLine("Botão de página anterior clicado...");
@@ -235,8 +235,8 @@ namespace Application
 
             }
             if (paginaatual == totalpaginas)
-                formMain.BtnNextPage.Enabled = false;
-            formMain.BtnBeforePage.Enabled = true;
+                formMain.btnNextPage.Enabled = false;
+            formMain.btnBeforePage.Enabled = true;
             MostraPagina(dataList);
             // Simulação de clique no botão de página anterior
             Console.WriteLine("Botão de página anterior clicado...");

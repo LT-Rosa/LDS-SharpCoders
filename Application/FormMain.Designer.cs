@@ -28,56 +28,64 @@
         /// </summary>
         private void InitializeComponent()
         {
-            BtnOpen = new System.Windows.Forms.Button();
-            BtnSubmit = new System.Windows.Forms.Button();
-            BtnBeforePage = new System.Windows.Forms.Button();
-            BtnNextPage = new System.Windows.Forms.Button();
+            btnOpen = new System.Windows.Forms.Button();
+            btnSubmit = new System.Windows.Forms.Button();
+            btnBeforePage = new System.Windows.Forms.Button();
+            btnNextPage = new System.Windows.Forms.Button();
             dataGridView1 = new System.Windows.Forms.DataGridView();
             lblPages = new System.Windows.Forms.Label();
+            txtBoxRevenue = new System.Windows.Forms.TextBox();
+            lblRevenue = new System.Windows.Forms.Label();
+            lblExpenses = new System.Windows.Forms.Label();
+            txtBoxExpenses = new System.Windows.Forms.TextBox();
+            btnAnalisar = new System.Windows.Forms.Button();
+            colorDialog1 = new System.Windows.Forms.ColorDialog();
+            btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // BtnOpen
+            // btnOpen
             // 
-            BtnOpen.Location = new System.Drawing.Point(12, 22);
-            BtnOpen.Name = "BtnOpen";
-            BtnOpen.Size = new System.Drawing.Size(121, 23);
-            BtnOpen.TabIndex = 0;
-            BtnOpen.Text = "Abrir Ficheiro";
-            BtnOpen.UseVisualStyleBackColor = true;
-            BtnOpen.Click += BtnOpen_Click;
+            btnOpen.Location = new System.Drawing.Point(12, 22);
+            btnOpen.Name = "btnOpen";
+            btnOpen.Size = new System.Drawing.Size(121, 23);
+            btnOpen.TabIndex = 0;
+            btnOpen.Text = "Abrir Ficheiro";
+            btnOpen.UseVisualStyleBackColor = true;
+            btnOpen.Click += BtnOpen_Click;
             // 
-            // BtnSubmit
+            // btnSubmit
             // 
-            BtnSubmit.Location = new System.Drawing.Point(12, 62);
-            BtnSubmit.Name = "BtnSubmit";
-            BtnSubmit.Size = new System.Drawing.Size(121, 23);
-            BtnSubmit.TabIndex = 1;
-            BtnSubmit.Text = "Enviar Ficheiro";
-            BtnSubmit.UseVisualStyleBackColor = true;
-            BtnSubmit.Click += BtnSubmit_Click;
+            btnSubmit.Location = new System.Drawing.Point(12, 214);
+            btnSubmit.Name = "btnSubmit";
+            btnSubmit.Size = new System.Drawing.Size(121, 23);
+            btnSubmit.TabIndex = 1;
+            btnSubmit.Text = "Submeter";
+            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Visible = false;
+            btnSubmit.Click += BtnSubmit_Click;
             // 
-            // BtnBeforePage
+            // btnBeforePage
             // 
-            BtnBeforePage.Enabled = false;
-            BtnBeforePage.Location = new System.Drawing.Point(12, 450);
-            BtnBeforePage.Name = "BtnBeforePage";
-            BtnBeforePage.Size = new System.Drawing.Size(121, 23);
-            BtnBeforePage.TabIndex = 2;
-            BtnBeforePage.Text = "Pagina Anterior";
-            BtnBeforePage.UseVisualStyleBackColor = true;
-            BtnBeforePage.Click += BtnBeforePage_Click;
+            btnBeforePage.Enabled = false;
+            btnBeforePage.Location = new System.Drawing.Point(12, 450);
+            btnBeforePage.Name = "btnBeforePage";
+            btnBeforePage.Size = new System.Drawing.Size(121, 23);
+            btnBeforePage.TabIndex = 2;
+            btnBeforePage.Text = "Pagina Anterior";
+            btnBeforePage.UseVisualStyleBackColor = true;
+            btnBeforePage.Click += BtnBeforePage_Click;
             // 
-            // BtnNextPage
+            // btnNextPage
             // 
-            BtnNextPage.Enabled = false;
-            BtnNextPage.Location = new System.Drawing.Point(12, 499);
-            BtnNextPage.Name = "BtnNextPage";
-            BtnNextPage.Size = new System.Drawing.Size(121, 23);
-            BtnNextPage.TabIndex = 3;
-            BtnNextPage.Text = "Pagina Seguinte";
-            BtnNextPage.UseVisualStyleBackColor = true;
-            BtnNextPage.Click += BtnNextPage_Click;
+            btnNextPage.Enabled = false;
+            btnNextPage.Location = new System.Drawing.Point(12, 499);
+            btnNextPage.Name = "btnNextPage";
+            btnNextPage.Size = new System.Drawing.Size(121, 23);
+            btnNextPage.TabIndex = 3;
+            btnNextPage.Text = "Pagina Seguinte";
+            btnNextPage.UseVisualStyleBackColor = true;
+            btnNextPage.Click += BtnNextPage_Click;
             // 
             // dataGridView1
             // 
@@ -96,23 +104,86 @@
             // lblPages
             // 
             lblPages.AutoSize = true;
-            lblPages.Location = new System.Drawing.Point(45, 242);
+            lblPages.Location = new System.Drawing.Point(43, 328);
             lblPages.Name = "lblPages";
             lblPages.Size = new System.Drawing.Size(48, 15);
             lblPages.TabIndex = 5;
             lblPages.Text = "Páginas";
+            // 
+            // txtBoxRevenue
+            // 
+            txtBoxRevenue.Location = new System.Drawing.Point(12, 126);
+            txtBoxRevenue.Name = "txtBoxRevenue";
+            txtBoxRevenue.Size = new System.Drawing.Size(121, 23);
+            txtBoxRevenue.TabIndex = 6;
+            txtBoxRevenue.Visible = false;
+            // 
+            // lblRevenue
+            // 
+            lblRevenue.AutoSize = true;
+            lblRevenue.Location = new System.Drawing.Point(12, 99);
+            lblRevenue.Name = "lblRevenue";
+            lblRevenue.Size = new System.Drawing.Size(92, 15);
+            lblRevenue.TabIndex = 7;
+            lblRevenue.Text = "Previsão Receita";
+            lblRevenue.Visible = false;
+            // 
+            // lblExpenses
+            // 
+            lblExpenses.AutoSize = true;
+            lblExpenses.Location = new System.Drawing.Point(12, 155);
+            lblExpenses.Name = "lblExpenses";
+            lblExpenses.Size = new System.Drawing.Size(97, 15);
+            lblExpenses.TabIndex = 8;
+            lblExpenses.Text = "Previsão Despesa";
+            lblExpenses.Visible = false;
+            // 
+            // txtBoxExpenses
+            // 
+            txtBoxExpenses.Location = new System.Drawing.Point(12, 178);
+            txtBoxExpenses.Name = "txtBoxExpenses";
+            txtBoxExpenses.Size = new System.Drawing.Size(121, 23);
+            txtBoxExpenses.TabIndex = 9;
+            txtBoxExpenses.Visible = false;
+            // 
+            // btnAnalisar
+            // 
+            btnAnalisar.Location = new System.Drawing.Point(12, 62);
+            btnAnalisar.Name = "btnAnalisar";
+            btnAnalisar.Size = new System.Drawing.Size(121, 23);
+            btnAnalisar.TabIndex = 10;
+            btnAnalisar.Text = "Analisar";
+            btnAnalisar.UseVisualStyleBackColor = true;
+            btnAnalisar.Click += btnAnalisar_Click;
+            // 
+            // btnCancel
+            // 
+            btnCancel.Location = new System.Drawing.Point(12, 243);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new System.Drawing.Size(121, 23);
+            btnCancel.TabIndex = 11;
+            btnCancel.Text = "Cancelar";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Visible = false;
+            btnCancel.Click += btnCancel_Click;
             // 
             // FormMain
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(824, 574);
+            Controls.Add(btnCancel);
+            Controls.Add(btnAnalisar);
+            Controls.Add(txtBoxExpenses);
+            Controls.Add(lblExpenses);
+            Controls.Add(lblRevenue);
+            Controls.Add(txtBoxRevenue);
             Controls.Add(lblPages);
             Controls.Add(dataGridView1);
-            Controls.Add(BtnNextPage);
-            Controls.Add(BtnBeforePage);
-            Controls.Add(BtnSubmit);
-            Controls.Add(BtnOpen);
+            Controls.Add(btnNextPage);
+            Controls.Add(btnBeforePage);
+            Controls.Add(btnSubmit);
+            Controls.Add(btnOpen);
             Name = "FormMain";
             Text = "Main";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -122,11 +193,18 @@
 
         #endregion
 
-        public System.Windows.Forms.Button BtnOpen;
-        public System.Windows.Forms.Button BtnSubmit;
-        public System.Windows.Forms.Button BtnBeforePage;
-        public System.Windows.Forms.Button BtnNextPage;
+        public System.Windows.Forms.Button btnOpen;
+        public System.Windows.Forms.Button btnSubmit;
+        public System.Windows.Forms.Button btnBeforePage;
+        public System.Windows.Forms.Button btnNextPage;
         public System.Windows.Forms.DataGridView dataGridView1;
         public System.Windows.Forms.Label lblPages;
+        private System.Windows.Forms.TextBox txtBoxRevenue;
+        private System.Windows.Forms.Label lblRevenue;
+        private System.Windows.Forms.Label lblExpenses;
+        private System.Windows.Forms.TextBox txtBoxExpenses;
+        public System.Windows.Forms.Button btnAnalisar;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        public System.Windows.Forms.Button btnCancel;
     }
 }
