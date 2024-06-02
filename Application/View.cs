@@ -11,7 +11,8 @@ namespace Application
 
         readonly Model model;
         private FormWaiting waitingForm;
-        FormMain formMain;
+        private FormMain mainForm;
+        private FormLog logForm;
         public int paginaatual = 1;
         public int totalpaginas = 0;
 
@@ -49,14 +50,14 @@ namespace Application
         {
             // Simulação de acionar a interface
             // Console.WriteLine("Acionando interface...");
-            formMain = new FormMain(this);
+            mainForm = new FormMain(this);
         }
 
         // Apresenta a janela principal
         public void ApresentarJanela()
         {
             // Simulação de apresentar a janela
-            System.Windows.Forms.Application.Run(formMain);
+            System.Windows.Forms.Application.Run(mainForm);
         }
 
         public void FalhaCarregarFicheiro()
@@ -67,19 +68,19 @@ namespace Application
 
         public void PrevisualizarFicheiro(List<FinancialData> dados, int totalregistros)
         {
-            formMain.btnBeforePage.Enabled = false;
+            mainForm.btnBeforePage.Enabled = false;
             totalpaginas = totalregistros / numeroregistrosporpagina;
             if (totalregistros % numeroregistrosporpagina > 0)
                 totalpaginas++;
             if (totalpaginas > 1)
-                formMain.btnNextPage.Enabled = true;
-            formMain.dataGridView1.Rows.Clear();
-            formMain.dataGridView1.Columns.Clear();
+                mainForm.btnNextPage.Enabled = true;
+            mainForm.dataGridView1.Rows.Clear();
+            mainForm.dataGridView1.Columns.Clear();
             paginaatual = 1;
 
-            formMain.dataGridView1.Columns.Add("Revenue", "Revenue");
-            formMain.dataGridView1.Columns.Add("Expenses", "Expenses");
-            formMain.dataGridView1.Columns.Add("Profit", "Profit");
+            mainForm.dataGridView1.Columns.Add("Revenue", "Revenue");
+            mainForm.dataGridView1.Columns.Add("Expenses", "Expenses");
+            mainForm.dataGridView1.Columns.Add("Profit", "Profit");
 
             MostraPagina(dados);
 
@@ -90,12 +91,12 @@ namespace Application
         {
             // Simulação de mostrar a página
             Console.WriteLine($"Mostrando página: {paginaatual}");
-            formMain.dataGridView1.Rows.Clear();
+            mainForm.dataGridView1.Rows.Clear();
             AtualizaPagina();
             foreach (var dado in dados)
             {
                 if (dados.IndexOf(dado) >= (paginaatual - 1) * numeroregistrosporpagina && dados.IndexOf(dado) < paginaatual * numeroregistrosporpagina)
-                    formMain.dataGridView1.Rows.Add(dado.Revenue.ToString("0.00"), dado.Expenses.ToString("0.00"), dado.Profit.ToString("0.00"));
+                    mainForm.dataGridView1.Rows.Add(dado.Revenue.ToString("0.00"), dado.Expenses.ToString("0.00"), dado.Profit.ToString("0.00"));
 
             }
         }
@@ -194,8 +195,8 @@ namespace Application
 
             //MostraPagina();
             if (paginaatual == 1)
-                formMain.btnBeforePage.Enabled = false;
-            formMain.btnNextPage.Enabled = true;
+                mainForm.btnBeforePage.Enabled = false;
+            mainForm.btnNextPage.Enabled = true;
             MostraPagina(dataList);
             // Simulação de clique no botão de página anterior
             Console.WriteLine("Botão de página anterior clicado...");
@@ -208,8 +209,8 @@ namespace Application
 
             }
             if (paginaatual == totalpaginas)
-                formMain.btnNextPage.Enabled = false;
-            formMain.btnBeforePage.Enabled = true;
+                mainForm.btnNextPage.Enabled = false;
+            mainForm.btnBeforePage.Enabled = true;
             MostraPagina(dataList);
             // Simulação de clique no botão de página anterior
             Console.WriteLine("Botão de página anterior clicado...");
@@ -218,27 +219,27 @@ namespace Application
         private void AtualizaPagina()
         {
             // Simulação de atualizar a página
-            formMain.lblPages.Text = "Página \n" + paginaatual + "/" + totalpaginas;
+            mainForm.lblPages.Text = "Página \n" + paginaatual + "/" + totalpaginas;
             Console.WriteLine("Atualizando página...");
         }
 
         private void MostraResultados(List<FinancialData> dataoutput)
         {
             Console.WriteLine("Resultados processados:");
-            formMain.dataGridView1.Rows.Clear();
-            formMain.dataGridView1.Columns.Clear();
-            formMain.dataGridView1.Columns.Add("Revenue", "Previsão de Receita");
-            formMain.dataGridView1.Columns.Add("Expenses", "Previsão de Despesa");
-            formMain.dataGridView1.Columns.Add("Profit", "Previsão de Lucro");
+            mainForm.dataGridView1.Rows.Clear();
+            mainForm.dataGridView1.Columns.Clear();
+            mainForm.dataGridView1.Columns.Add("Revenue", "Previsão de Receita");
+            mainForm.dataGridView1.Columns.Add("Expenses", "Previsão de Despesa");
+            mainForm.dataGridView1.Columns.Add("Profit", "Previsão de Lucro");
             paginaatual = 1;
             totalpaginas = 1;
 
             foreach (var data in dataoutput)
             {
-                formMain.dataGridView1.Rows.Add(data.Revenue.ToString("0.00"), data.Expenses.ToString("0.00"), data.Profit.ToString("0.00"));
+                mainForm.dataGridView1.Rows.Add(data.Revenue.ToString("0.00"), data.Expenses.ToString("0.00"), data.Profit.ToString("0.00"));
                 Console.WriteLine($"Revenue: {data.Revenue}, Expenses: {data.Expenses} => Profit: {data.Profit}");
             }
-            formMain.dataGridView1.Visible = true;
+            mainForm.dataGridView1.Visible = true;
         }
     }
 }
