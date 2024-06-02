@@ -23,7 +23,7 @@ namespace Application
         private PredictionEngine<FinancialData, FinancialDataPrediction> _predictionEngine;
 
         public Model() { }
-           
+
         public void RecolherDadosFicheiro(List<FinancialData> dados)
         {
             Console.WriteLine("Recuperando dados do arquivo...");
