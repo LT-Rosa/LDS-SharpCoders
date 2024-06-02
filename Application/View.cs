@@ -33,7 +33,7 @@ namespace Application
             model.ProcessarDadosApiResult += OutputDados; // Delegado para processar os dados
         }
 
-
+        // Inicia a interface
         public void AcionarInterface()
         {
             // Simulação de acionar a interface
@@ -41,6 +41,7 @@ namespace Application
             formMain = new FormMain(this);
         }
 
+        // Apresenta a janela principal
         public void ApresentarJanela()
         {
             // Simulação de apresentar a janela
@@ -58,7 +59,7 @@ namespace Application
         //{
         //    // Simulação de janela de carregar arquivo
         //    // Console.WriteLine("Janela de carregar arquivo aberta...");
-        //    OpenFile();
+        //    CarregaFicheiro();
         //}
 
         //public void ApresentaMensagemAguardar()
@@ -67,6 +68,7 @@ namespace Application
         //    Console.WriteLine("Aguarde enquanto o arquivo é carregado...");
         //}
 
+        // Prepara a previsualização dos dados
         public void PrevisualizarFicheiro(List<FinancialData> dados, int totalregistros)
         {
             // Simulação de pré-visualização do arquivo
@@ -94,6 +96,7 @@ namespace Application
 
         }
 
+        // mostra as linhas dos dados
         public void MostraPagina(List<FinancialData> dados)
         {
             // Simulação de mostrar a página
@@ -108,7 +111,7 @@ namespace Application
             }
         }
 
-
+        // ação a executar de pois de submeter os dados
         public void BotaoSubmeterClicado()
         {
             SubmeterFicheiro?.Invoke(dataList);
@@ -148,7 +151,8 @@ namespace Application
         //    JanelaCarregarFicheiro();
         //}
 
-        public void OpenFile()
+        // Método para abrir o arquivo e carregar os dados
+        public void CarregaFicheiro()
         {
 
             int totalregistros = 0;
