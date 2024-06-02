@@ -33,6 +33,7 @@ namespace Application
             model.ProcessarDadosApiResult += OutputDados; // Delegado para processar os dados
             model.LongOperationStarted += ApresentaMensagemAguardar; // Delegado para apresentar mensagem de aguardar
             model.LongOperationEnded += FecharMensagemAguardar; // Delegado para mensagem de saída
+            model.ProcessDataCompleted += MostraResultados; // Delegado para processar os dados
         }
 
 
@@ -262,6 +263,16 @@ namespace Application
             // Simulação de atualizar a página
             formMain.lblPages.Text = "Página \n" + paginaatual + "/" + totalpaginas;
             Console.WriteLine("Atualizando página...");
+        }
+
+        private void MostraResultados(List<FinancialData> dataoutput)
+        {
+            DataProcessed?.Invoke(new List<string> { "Dados do arquivo" });
+            Console.WriteLine("Resultados processados:");
+            foreach (var data in dataoutput)
+            {
+                Console.WriteLine($"Revenue: {data.Revenue}, Expenses: {data.Expenses} => Profit: {data.Profit}");
+            }
         }
     }
 }

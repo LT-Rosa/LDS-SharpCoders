@@ -13,21 +13,19 @@ namespace Application
     {
         public delegate void LongOperationStartedHandler();
         public delegate void LongOperationEndedHandler();
-
+        public delegate void ProcessDataCompletedHandler(List<FinancialData> processedData);
+        public delegate void ProcessarDadosApiEventHandler(List<string> Dados);
         public event LongOperationStartedHandler LongOperationStarted;
         public event LongOperationEndedHandler LongOperationEnded;
+        public event ProcessDataCompletedHandler ProcessDataCompleted;
+        public event ProcessarDadosApiEventHandler ProcessarDadosApiResult;
+
         // Define o modelo de dados de saída
         public class FinancialDataPrediction
         {
             [ColumnName("Score")]
             public float Profit { get; set; }
         }
-
-        public delegate void ProcessarDadosApiEventHandler(List<string> Dados);
-        public event ProcessarDadosApiEventHandler ProcessarDadosApiResult;
-
-        private ITransformer _trainedModel;
-        private PredictionEngine<FinancialData, FinancialDataPrediction> _predictionEngine;
 
         public Model() { }
 
@@ -53,18 +51,13 @@ namespace Application
             IDataView _dataView = _mlContext.Data.LoadFromEnumerable(dataList);
 
             // Define the training pipeline
-            //var pipeline = _mlContext.Transforms.Conversion.MapValueToKey("Lucro")
-            //    .Append(_mlContext.Transforms.Concatenate("Features", nameof(FinancialData.Revenue), nameof(FinancialData.Expenses)))
-            //    .Append(_mlContext.Regression.Trainers.LbfgsPoissonRegression());
             var _pipeline = _mlContext.Transforms.CopyColumns(outputColumnName: "Label", inputColumnName: "Profit")
                 .Append(_mlContext.Transforms.Concatenate("Features", "Revenue", "Expenses"))
                 .Append(_mlContext.Regression.Trainers.Sdca());
 
-
             var _model = _pipeline.Fit(_dataView);
             var _predictionEngine = _mlContext.Model.CreatePredictionEngine<FinancialData, FinancialDataPrediction>(_model);
             
-            LongOperationEnded?.Invoke();
             List<FinancialData> dataoutput= new List<FinancialData>();
             foreach (var data in dataToAnalyse)
             {
@@ -72,13 +65,9 @@ namespace Application
                 dataoutput.Add(new FinancialData { Revenue = data.Revenue, Expenses = data.Expenses, Profit = prediction.Profit });
                 Console.WriteLine($"Revenue: {data.Revenue}, Expenses: {data.Expenses} => Profit: {prediction.Profit}");
             }
-
+            LongOperationEnded?.Invoke();
+            ProcessDataCompleted?.Invoke(dataoutput);
             Console.WriteLine("Model training complete.");
-        }
-
-        public FinancialDataPrediction Predict(FinancialData input)
-        {
-            return _predictionEngine.Predict(input);
         }
     }
 }
