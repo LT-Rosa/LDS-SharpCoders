@@ -51,7 +51,7 @@ namespace Application
             //    .Append(_mlContext.Transforms.Concatenate("Features", nameof(FinancialData.Revenue), nameof(FinancialData.Expenses)))
             //    .Append(_mlContext.Regression.Trainers.LbfgsPoissonRegression());
             var _pipeline = _mlContext.Transforms.CopyColumns(outputColumnName: "Label", inputColumnName: "Profit")
-                .Append(_mlContext.Transforms.Concatenate("Features", "Revenue", "Expenses"))
+                .Append(_mlContext.Transforms.Concatenate("Output", "Revenue", "Expenses"))
                 .Append(_mlContext.Regression.Trainers.Sdca());
 
 
