@@ -57,7 +57,7 @@ namespace Application
         public void ApresentarJanela()
         {
             // Simulação de apresentar a janela
-            System.Windows.Forms.Application.Run(mainForm);
+            mainForm.ShowDialog();
         }
 
         public void FalhaCarregarFicheiro()
