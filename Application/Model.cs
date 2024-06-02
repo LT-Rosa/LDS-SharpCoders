@@ -8,6 +8,13 @@ namespace Application
 {
     public class Model : IModel
     {
+        // Define o modelo de dados de saída
+        public class FinancialDataPrediction
+        {
+            [ColumnName("Score")]
+            public float Profit { get; set; }
+        }
+
         public delegate void ProcessarDadosApiEventHandler(List<string> Dados);
         public event ProcessarDadosApiEventHandler ProcessarDadosApiResult;
 
@@ -57,9 +64,5 @@ namespace Application
         }
     }
 
-    public class FinancialDataPrediction
-    {
-        [ColumnName("Score")]
-        public float Profit { get; set; }
-    }
+
 }
