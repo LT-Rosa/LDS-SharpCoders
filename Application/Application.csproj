@@ -7,11 +7,15 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <StartupObject>Application.MainController.Application</StartupObject>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <ApplicationIcon>SharpCodersLogo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Properties\**" />
     <EmbeddedResource Remove="Properties\**" />
     <None Remove="Properties\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SharpCodersLogo.ico" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ML" Version="3.0.1" />
