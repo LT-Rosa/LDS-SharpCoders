@@ -4,6 +4,8 @@ using Microsoft.ML.Data;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Application
 {
@@ -42,18 +44,19 @@ namespace Application
         public void ProcessarDadosAPI(List<FinancialData> dataList)
         {
             MLContext _mlContext = new MLContext();
-            IDataView dataView = _mlContext.Data.LoadFromEnumerable(dataList);
+            IDataView _dataView = _mlContext.Data.LoadFromEnumerable(dataList);
 
             // Define the training pipeline
-            var pipeline = _mlContext.Transforms.Conversion.MapValueToKey("Lucro")
-                .Append(_mlContext.Transforms.Concatenate("Features", nameof(FinancialData.Revenue), nameof(FinancialData.Expenses)))
-                .Append(_mlContext.Regression.Trainers.LbfgsPoissonRegression());
+            //var pipeline = _mlContext.Transforms.Conversion.MapValueToKey("Lucro")
+            //    .Append(_mlContext.Transforms.Concatenate("Features", nameof(FinancialData.Revenue), nameof(FinancialData.Expenses)))
+            //    .Append(_mlContext.Regression.Trainers.LbfgsPoissonRegression());
+            var _pipeline = _mlContext.Transforms.CopyColumns(outputColumnName: "Label", inputColumnName: "Profit")
+                .Append(_mlContext.Transforms.Concatenate("Features", "Revenue", "Expenses"))
+                .Append(_mlContext.Regression.Trainers.Sdca());
 
-            // Train the model
-            _trainedModel = pipeline.Fit(dataView);
 
-            // Create prediction engine
-            _predictionEngine = _mlContext.Model.CreatePredictionEngine<FinancialData, FinancialDataPrediction>(_trainedModel);
+            var _model = _pipeline.Fit(_dataView);
+            var _predictionEngine = _mlContext.Model.CreatePredictionEngine<FinancialData, FinancialDataPrediction>(_model);
 
             Console.WriteLine("Model training complete.");
         }
