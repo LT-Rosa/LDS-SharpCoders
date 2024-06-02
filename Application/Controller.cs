@@ -8,7 +8,7 @@ namespace Application
         // Controller
 
         // Delegado para nagevação entre páginas
-        public delegate void NavigationHandler(string message);
+        //public delegate void NavigationHandler(string message);
 
         public class FinancialData
         {
@@ -33,12 +33,6 @@ namespace Application
                 this.view.SubmeterFicheiro += SubmeterFicheiro;
             }
 
-            private void SubmeterFicheiro(List<FinancialData> datalist, List<FinancialData> dataToAnalyse)
-            {
-                // var dados = model.RecolherDadosFicheiro();
-                model.RecolherDadosFicheiro(datalist, dataToAnalyse);
-                //  view.OutputDados(dadosProcessados);
-            }
 
             // START DO PROGRAMA
             public void IniciarPrograma()
@@ -47,7 +41,10 @@ namespace Application
                 view.ApresentarJanela();
             }
 
-
+            private void SubmeterFicheiro(List<FinancialData> datalist, List<FinancialData> dataToAnalyse)
+            {
+                model.RecolherDadosFicheiro(datalist, dataToAnalyse);
+            }
             //CARREGAMENTO DOS DADOS DO FICHEIRO
             //public void CarregaFicheiro()
             //{
