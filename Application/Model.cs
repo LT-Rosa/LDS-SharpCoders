@@ -41,7 +41,7 @@ namespace Application
             }
         }
 
-        public void ProcessarDadosAPI(List<FinancialData> dataList, List<FinancialData>dataToAnalyse)
+        public void ProcessarDadosAPI(List<FinancialData> dataList, List<FinancialData> dataToAnalyse)
         {
             MLContext _mlContext = new MLContext();
             IDataView _dataView = _mlContext.Data.LoadFromEnumerable(dataList);
@@ -58,6 +58,12 @@ namespace Application
             var _model = _pipeline.Fit(_dataView);
             var _predictionEngine = _mlContext.Model.CreatePredictionEngine<FinancialData, FinancialDataPrediction>(_model);
 
+            foreach (var data in dataToAnalyse)
+            {
+                var prediction = _predictionEngine.Predict(data);
+                MessageBox.Show($"Revenue: {data.Revenue}, Expenses: {data.Expenses} => Profit: {prediction.Profit}");
+                Console.WriteLine($"Revenue: {data.Revenue}, Expenses: {data.Expenses} => Profit: {prediction.Profit}");
+            }
             Console.WriteLine("Model training complete.");
         }
 
