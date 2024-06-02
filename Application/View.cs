@@ -23,9 +23,6 @@ namespace Application
         public delegate void FileLoadingErrorHandler(string message);
         public event FileLoadingErrorHandler FileLoadingError;
 
-        public delegate void DataProcessedHandler(List<string> processedData);
-        public event DataProcessedHandler DataProcessed;
-
         public View(Model _model)
         {
             // Inicializa o model
@@ -267,12 +264,20 @@ namespace Application
 
         private void MostraResultados(List<FinancialData> dataoutput)
         {
-            DataProcessed?.Invoke(new List<string> { "Dados do arquivo" });
             Console.WriteLine("Resultados processados:");
+            formMain.dataGridView1.Rows.Clear();
+            formMain.dataGridView1.Columns.Clear();
+            formMain.dataGridView1.Columns.Add("Revenue", "Previsão de Receita");
+            formMain.dataGridView1.Columns.Add("Expenses", "Previsão de Despesa");
+            formMain.dataGridView1.Columns.Add("Profit", "Previsão de Lucro");
+
+
             foreach (var data in dataoutput)
             {
+                formMain.dataGridView1.Rows.Add(data.Revenue.ToString("0.00"), data.Expenses.ToString("0.00"), data.Profit.ToString("0.00"));
                 Console.WriteLine($"Revenue: {data.Revenue}, Expenses: {data.Expenses} => Profit: {data.Profit}");
             }
+            formMain.dataGridView1.Visible = true;
         }
     }
 }
