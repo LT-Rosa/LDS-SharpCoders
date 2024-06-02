@@ -13,6 +13,7 @@ namespace Application
             [STAThread]
             static void Main()
             {
+                // Inicializa o controlador
                 control = new Controller();
                 control.IniciarPrograma();
             }
@@ -20,21 +21,24 @@ namespace Application
         }
         public interface IController
         {
-            void IniciarPrograma();
-            void AcionarFim();
+            // Define a interface de entrada
+            void IniciarPrograma(); // Inicia o programa
+            void AcionarFim(); // Aciona o fim do programa
         }
 
         public interface IView
         {
-            void AcionarInterface();
-            void ApresentarJanela();
-            void MensagemSaida();
+            // Define a interface de saída
+            void AcionarInterface(); // Aciona a interface
+            void ApresentarJanela(); // Apresenta a janela
+            void MensagemSaida(); // Mensagem de saída
             event SubmeterFicheiroEventHandler SubmeterFicheiro;
         }
 
         public interface IModel
         {
-            void RecolherDadosFicheiro(List<FinancialData> datalist, List<FinancialData> dataToAnalyse);
+            // Define o modelo de dados de saída
+            void RecolherDadosFicheiro(List<FinancialData> datalist, List<FinancialData> dataToAnalyse); // Recolhe os dados do ficheiro
         }
 
     }
