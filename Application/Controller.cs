@@ -21,7 +21,6 @@ namespace Application
         {
             readonly View view;
             readonly Model model;
-
             // Eventos do delegado
             //public event NavigationHandler OnPreviousPage;
             //public event NavigationHandler OnNextPage;

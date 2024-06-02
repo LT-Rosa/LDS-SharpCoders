@@ -54,6 +54,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBoxLog;
+        public System.Windows.Forms.TextBox textBoxLog;
     }
 }
