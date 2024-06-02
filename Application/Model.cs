@@ -1,6 +1,7 @@
 ﻿using Application.MainController;
 using Microsoft.ML;
 using Microsoft.ML.Data;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 
@@ -18,7 +19,6 @@ namespace Application
         public delegate void ProcessarDadosApiEventHandler(List<string> Dados);
         public event ProcessarDadosApiEventHandler ProcessarDadosApiResult;
 
-        private readonly MLContext _mlContext;
         private ITransformer _trainedModel;
         private PredictionEngine<FinancialData, FinancialDataPrediction> _predictionEngine;
 
@@ -30,9 +30,16 @@ namespace Application
         public void RecolherDadosFicheiro(List<FinancialData> dados)
         {
             Console.WriteLine("Recuperando dados do arquivo...");
-            var resultado = new List<string> { "Dados do arquivo" };
-
-            ProcessarDadosAPI(resultado);
+            //var resultado = new List<string> { "Dados do arquivo" };
+            //ProcessarDadosAPI(resultado);
+            try
+                {
+                TrainModel(dados);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao treinar o modelo: " + ex.Message);
+            }
         }
 
         private void ProcessarDadosAPI(List<string> dados)
@@ -43,10 +50,12 @@ namespace Application
 
         public void TrainModel(List<FinancialData> dataList)
         {
-            var dataView = _mlContext.Data.LoadFromEnumerable(dataList);
+            MLContext _mlContext = new MLContext();
+            IDataView dataView = _mlContext.Data.LoadFromEnumerable(dataList);
 
             // Define the training pipeline
-            var pipeline = _mlContext.Transforms.Concatenate("Features", nameof(FinancialData.Revenue), nameof(FinancialData.Expenses))
+            var pipeline = _mlContext.Transforms.Conversion.MapValueToKey("Lucro")
+                .Append(_mlContext.Transforms.Concatenate("Features", nameof(FinancialData.Revenue), nameof(FinancialData.Expenses)))
                 .Append(_mlContext.Regression.Trainers.LbfgsPoissonRegression());
 
             // Train the model
