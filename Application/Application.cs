@@ -56,8 +56,7 @@ namespace Application
         {
             // Define o modelo de dados de saída
             void RecolherDadosFicheiro(List<FinancialData> datalist, List<FinancialData> dataToAnalyse); // Recolhe os dados do ficheiro
-            void ProcessarDadosAPI(List<FinancialData> dataList, List<FinancialData> dataToAnalyse);
-           
+            void ProcessarDadosAPI(List<FinancialData> dataList, List<FinancialData> dataToAnalyse); // Processa os dados na API
         }
 
     }
