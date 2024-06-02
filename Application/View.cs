@@ -270,7 +270,8 @@ namespace Application
             formMain.dataGridView1.Columns.Add("Revenue", "Previsão de Receita");
             formMain.dataGridView1.Columns.Add("Expenses", "Previsão de Despesa");
             formMain.dataGridView1.Columns.Add("Profit", "Previsão de Lucro");
-
+            paginaatual = 1;
+            totalpaginas = 1;
 
             foreach (var data in dataoutput)
             {

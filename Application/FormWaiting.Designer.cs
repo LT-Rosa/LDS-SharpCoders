@@ -42,7 +42,7 @@
             lblMessage.Name = "lblMessage";
             lblMessage.Size = new System.Drawing.Size(380, 21);
             lblMessage.TabIndex = 0;
-            lblMessage.Text = "Por favor aguarde, estamos processado a informação.";
+            lblMessage.Text = "Por favor aguarde, estamos à processar a informação.";
             // 
             // pictureBox1
             // 
