@@ -15,9 +15,9 @@ namespace Application
         private FormLog logForm;
         public int paginaatual = 1;
         public int totalpaginas = 0;
-
         public int numeroregistrosporpagina = 20;
         List<FinancialData> dataList = new();
+
         public delegate void SubmeterFicheiroEventHandler(List<FinancialData> datalist, List<FinancialData> dataToAnalyse); // Delegado para submeter o arquivo
         public event SubmeterFicheiroEventHandler SubmeterFicheiro; // Evento para submeter o arquivo
 
