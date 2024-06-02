@@ -30,7 +30,7 @@ namespace Application
             //var resultado = new List<string> { "Dados do arquivo" };
             //ProcessarDadosAPI(resultado);
             try
-                {
+            {
                 ProcessarDadosAPI(dados);
             }
             catch (Exception ex)
@@ -63,6 +63,4 @@ namespace Application
             return _predictionEngine.Predict(input);
         }
     }
-
-
 }
