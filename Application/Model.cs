@@ -22,11 +22,8 @@ namespace Application
         private ITransformer _trainedModel;
         private PredictionEngine<FinancialData, FinancialDataPrediction> _predictionEngine;
 
-        public Model()
-        {
-            _mlContext = new MLContext();
-        }
-
+        public Model() { }
+           
         public void RecolherDadosFicheiro(List<FinancialData> dados)
         {
             Console.WriteLine("Recuperando dados do arquivo...");
