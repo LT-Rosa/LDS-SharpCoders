@@ -28,12 +28,11 @@ namespace Application
 
         public void RecolherDadosFicheiro(List<FinancialData> dados, List<FinancialData> dataToAnalyse)
         {
+            // Simulação de carregar o arquivo
             Console.WriteLine("Recuperando dados do arquivo...");
-            //var resultado = new List<string> { "Dados do arquivo" };
-            //ProcessarDadosAPI(resultado);
             try
             {
-                ProcessarDadosAPI(dados, dataToAnalyse);
+                ProcessarDadosAPI(dados, dataToAnalyse); // Chama o método para processar os dados
             }
             catch (Exception ex)
             {
@@ -41,13 +40,14 @@ namespace Application
             }
         }
 
+        // Processa os dados na API
         public void ProcessarDadosAPI(List<FinancialData> dataList, List<FinancialData> dataToAnalyse)
         {
             LongOperationStarted?.Invoke();
             MLContext _mlContext = new MLContext();
             IDataView _dataView = _mlContext.Data.LoadFromEnumerable(dataList);
 
-            // Define the training pipeline
+            // Define a pipeline de treino do modelo
             var _pipeline = _mlContext.Transforms.CopyColumns(outputColumnName: "Label", inputColumnName: "Profit")
                 .Append(_mlContext.Transforms.Concatenate("Features", "Revenue", "Expenses"))
                 .Append(_mlContext.Regression.Trainers.Sdca());
@@ -55,6 +55,7 @@ namespace Application
             var _model = _pipeline.Fit(_dataView);
             var _predictionEngine = _mlContext.Model.CreatePredictionEngine<FinancialData, FinancialDataPrediction>(_model);
 
+            // Processa os dados de entrada e exibe o resultado
             List<FinancialData> dataoutput = new List<FinancialData>();
             foreach (var data in dataToAnalyse)
             {
