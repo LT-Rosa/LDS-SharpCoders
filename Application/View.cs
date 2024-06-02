@@ -35,10 +35,6 @@ namespace Application
             model.LongOperationEnded += FecharMensagemAguardar; // Delegado para mensagem de saída
         }
 
-        private void FecharMensagemAguardar()
-        {
-            waitingForm.Close();
-        }
 
         private void ApresentaMensagemAguardar()
         {
@@ -46,6 +42,10 @@ namespace Application
             waitingForm.Show();
         }
 
+        private void FecharMensagemAguardar()
+        {
+            waitingForm.Close();
+        }
         // Inicia a interface
         public void AcionarInterface()
         {
