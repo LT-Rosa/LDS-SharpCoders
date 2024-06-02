@@ -10,7 +10,7 @@ namespace Application
     {
 
         readonly Model model;
-
+        private FormWaiting waitingForm;
         FormMain formMain;
         public int paginaatual = 1;
         public int totalpaginas = 0;
@@ -31,6 +31,19 @@ namespace Application
             // Inicializa o model
             model = _model;
             model.ProcessarDadosApiResult += OutputDados; // Delegado para processar os dados
+            model.LongOperationStarted += ApresentaMensagemAguardar; // Delegado para apresentar mensagem de aguardar
+            model.LongOperationEnded += FecharMensagemAguardar; // Delegado para mensagem de saída
+        }
+
+        private void FecharMensagemAguardar()
+        {
+            waitingForm.Close();
+        }
+
+        private void ApresentaMensagemAguardar()
+        {
+            FormWaiting waitingForm = new FormWaiting();
+            waitingForm.Show();
         }
 
         // Inicia a interface
