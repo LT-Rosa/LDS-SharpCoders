@@ -37,14 +37,10 @@ namespace Application
 
         public interface IModel
         {
-<<<<<<< Updated upstream
             // Define o modelo de dados de saída
             void RecolherDadosFicheiro(List<FinancialData> datalist, List<FinancialData> dataToAnalyse); // Recolhe os dados do ficheiro
-=======
-            void RecolherDadosFicheiro(List<FinancialData> datalist, List<FinancialData> dataToAnalyse);
             void ProcessarDadosAPI(List<FinancialData> dataList, List<FinancialData> dataToAnalyse);
            
->>>>>>> Stashed changes
         }
 
     }
