@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using static Application.View;
 
 namespace Application
@@ -34,10 +35,12 @@ namespace Application
                 this.view.SubmeterFicheiro += SubmeterFicheiro;
             }
 
-            private void SubmeterFicheiro(List<FinancialData> datalist)
+            private void SubmeterFicheiro(List<FinancialData> datalist, String strRevenue, String strExpenses)
             {
+                List<FinancialData> dataToAnalyse = new List<FinancialData>();
+                dataToAnalyse.Add(new FinancialData { Revenue = float.Parse(strRevenue), Expenses = float.Parse(strExpenses) });
                 // var dados = model.RecolherDadosFicheiro();
-                model.RecolherDadosFicheiro(datalist);
+                model.RecolherDadosFicheiro(datalist, strRevenue, strExpenses);
                 //  view.OutputDados(dadosProcessados);
             }
 

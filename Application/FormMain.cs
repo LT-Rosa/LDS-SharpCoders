@@ -31,7 +31,7 @@ namespace Application
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
 
-            view.BotaoSubmeterClicado();
+            view.BotaoSubmeterClicado(txtBoxRevenue.Text,txtBoxExpenses.Text);
         }
 
         private void BtnAnalisar_Click(object sender, EventArgs e)
