@@ -15,7 +15,7 @@ namespace Application
 
         private void BtnOpen_Click(object sender, EventArgs e)
         {
-            view.OpenFile();
+            view.CarregaFicheiro();
         }
 
         private void BtnBeforePage_Click(object sender, EventArgs e)
