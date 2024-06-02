@@ -15,9 +15,24 @@
     <None Remove="Properties\**" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\Gear.gif" />
     <Content Include="SharpCodersLogo.ico" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.ML" Version="3.0.1" />
+    <PackageReference Include="System.Runtime.Extensions" Version="4.3.1" />
   </ItemGroup>
 </Project>

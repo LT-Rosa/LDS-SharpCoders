@@ -12,19 +12,13 @@ namespace Application
 {
     public partial class FormWaiting : Form
     {
+
+
         public FormWaiting()
         {
             InitializeComponent();
-        }
-
-        private void _Click(object sender, EventArgs e)
-        {
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
