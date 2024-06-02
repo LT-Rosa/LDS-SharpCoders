@@ -34,7 +34,7 @@ namespace Application
             view.BotaoSubmeterClicado();
         }
 
-        private void btnAnalisar_Click(object sender, EventArgs e)
+        private void BtnAnalisar_Click(object sender, EventArgs e)
         {
 
             this.lblRevenue.Visible = true;
@@ -48,11 +48,9 @@ namespace Application
             this.btnNextPage.Enabled = false;
             this.btnOpen.Enabled = false;
             this.dataGridView1.Visible = false;
-
-
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             this.lblRevenue.Visible = false;
             this.txtBoxRevenue.Visible = false;

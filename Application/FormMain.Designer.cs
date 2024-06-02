@@ -154,7 +154,7 @@
             btnAnalisar.TabIndex = 10;
             btnAnalisar.Text = "Analisar";
             btnAnalisar.UseVisualStyleBackColor = true;
-            btnAnalisar.Click += btnAnalisar_Click;
+            btnAnalisar.Click += BtnAnalisar_Click;
             // 
             // btnCancel
             // 
@@ -165,7 +165,7 @@
             btnCancel.Text = "Cancelar";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Visible = false;
-            btnCancel.Click += btnCancel_Click;
+            btnCancel.Click += BtnCancel_Click;
             // 
             // FormMain
             // 
