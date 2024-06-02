@@ -1,11 +1,8 @@
 ﻿using Application.MainController;
 using Microsoft.ML;
 using Microsoft.ML.Data;
-using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Application
 {
@@ -57,8 +54,8 @@ namespace Application
 
             var _model = _pipeline.Fit(_dataView);
             var _predictionEngine = _mlContext.Model.CreatePredictionEngine<FinancialData, FinancialDataPrediction>(_model);
-            
-            List<FinancialData> dataoutput= new List<FinancialData>();
+
+            List<FinancialData> dataoutput = new List<FinancialData>();
             foreach (var data in dataToAnalyse)
             {
                 var prediction = _predictionEngine.Predict(data);

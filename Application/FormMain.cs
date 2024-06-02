@@ -31,7 +31,7 @@ namespace Application
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
 
-            view.BotaoSubmeterClicado(txtBoxRevenue.Text,txtBoxExpenses.Text);
+            view.BotaoSubmeterClicado(txtBoxRevenue.Text, txtBoxExpenses.Text);
         }
 
         private void BtnAnalisar_Click(object sender, EventArgs e)
@@ -59,7 +59,7 @@ namespace Application
             this.btnSubmit.Visible = false;
             this.btnCancel.Visible = false;
             this.btnAnalisar.Visible = true;
-            if (view.paginaatual>1)
+            if (view.paginaatual > 1)
                 this.btnBeforePage.Enabled = true;
             if (view.paginaatual < view.totalpaginas)
                 this.btnNextPage.Enabled = true;

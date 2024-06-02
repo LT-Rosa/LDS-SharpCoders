@@ -36,7 +36,7 @@ namespace Application
 
         private void ApresentaMensagemAguardar()
         {
-            waitingForm=new FormWaiting();
+            waitingForm = new FormWaiting();
             waitingForm.Show();
         }
 

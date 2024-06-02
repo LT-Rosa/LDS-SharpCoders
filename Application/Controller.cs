@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using static Application.View;
+﻿using System.Collections.Generic;
 
 namespace Application
 {
