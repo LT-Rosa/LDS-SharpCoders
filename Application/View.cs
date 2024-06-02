@@ -56,7 +56,6 @@ namespace Application
         public void ApresentarJanela()
         {
             // Simulação de apresentar a janela
-            // Console.WriteLine("Apresentando janela...");
             System.Windows.Forms.Application.Run(formMain);
         }
 
@@ -66,29 +65,8 @@ namespace Application
             Console.WriteLine("Falha ao carregar o arquivo!");
         }
 
-        //public void JanelaCarregarFicheiro()
-        //{
-        //    // Simulação de janela de carregar arquivo
-        //    // Console.WriteLine("Janela de carregar arquivo aberta...");
-        //    CarregaFicheiro();
-        //}
-
-        //public void ApresentaMensagemAguardar()
-        //{
-        //    // Simulação de mensagem de aguardar
-        //    Console.WriteLine("Aguarde enquanto o arquivo é carregado...");
-        //}
-
-        // Prepara a previsualização dos dados
         public void PrevisualizarFicheiro(List<FinancialData> dados, int totalregistros)
         {
-            // Simulação de pré-visualização do arquivo
-            // Console.WriteLine("Pré-visualizando arquivo:");
-            // formMain.
-            // foreach (var dado in dados)
-            // {
-            //     Console.WriteLine(dado);
-            // }
             formMain.btnBeforePage.Enabled = false;
             totalpaginas = totalregistros / numeroregistrosporpagina;
             if (totalregistros % numeroregistrosporpagina > 0)
@@ -130,7 +108,6 @@ namespace Application
             SubmeterFicheiro?.Invoke(dataList, dataToAnalyse);
         }
 
-
         public void OutputDados(List<string> dadosProcessados)
         {
             try
@@ -159,12 +136,6 @@ namespace Application
             Console.WriteLine("Encerrando o programa...");
         }
 
-        //internal void BotaoLerFicheiroClicado()
-        //{
-        //    JanelaCarregarFicheiro();
-        //}
-
-        // Método para abrir o arquivo e carregar os dados
         public void CarregaFicheiro()
         {
 
@@ -215,17 +186,6 @@ namespace Application
                 }
             }
         }
-
-        //public void TrainAndPredictModel(List<FinancialData> dados)
-        //{
-        //    model.ProcessarDadosAPI(dados);
-
-        //    foreach (var data in dados)
-        //    {
-        //        var prediction = model.Predict(data);
-        //        Console.WriteLine($"Revenue: {data.Revenue}, Expenses: {data.Expenses}, Predicted Profit: {prediction.Profit}");
-        //    }
-        //}
 
         public void MostrarPaginaAnterior()
         {

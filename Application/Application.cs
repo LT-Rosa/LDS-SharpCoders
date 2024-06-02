@@ -1,6 +1,15 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
+using System.Windows.Forms;
 using static Application.View;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Application
 {
@@ -33,6 +42,14 @@ namespace Application
             void ApresentarJanela(); // Apresenta a janela
             void MensagemSaida(); // Mensagem de saída
             event SubmeterFicheiroEventHandler SubmeterFicheiro;
+            void FalhaCarregarFicheiro();
+            void PrevisualizarFicheiro(List<FinancialData> dados, int totalregistros);
+            void MostraPagina(List<FinancialData> dados);
+            void BotaoSubmeterClicado(String strRevenue, String strExpenses);
+            void OutputDados(List<string> dadosProcessados);
+            void CarregaFicheiro();
+            void MostrarPaginaAnterior();
+            void MostrarPaginaSeguinte();
         }
 
         public interface IModel
