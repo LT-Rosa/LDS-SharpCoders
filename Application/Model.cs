@@ -65,10 +65,11 @@ namespace Application
             var _predictionEngine = _mlContext.Model.CreatePredictionEngine<FinancialData, FinancialDataPrediction>(_model);
             
             LongOperationEnded?.Invoke();
+            List<FinancialData> dataoutput= new List<FinancialData>();
             foreach (var data in dataToAnalyse)
             {
                 var prediction = _predictionEngine.Predict(data);
-                MessageBox.Show($"Revenue: {data.Revenue}, Expenses: {data.Expenses} => Profit: {prediction.Profit}");
+                dataoutput.Add(new FinancialData { Revenue = data.Revenue, Expenses = data.Expenses, Profit = prediction.Profit });
                 Console.WriteLine($"Revenue: {data.Revenue}, Expenses: {data.Expenses} => Profit: {prediction.Profit}");
             }
 
