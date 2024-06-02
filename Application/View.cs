@@ -203,16 +203,16 @@ namespace Application
             }
         }
 
-        public void TrainAndPredictModel(List<FinancialData> dados)
-        {
-            model.ProcessarDadosAPI(dados);
+        //public void TrainAndPredictModel(List<FinancialData> dados)
+        //{
+        //    model.ProcessarDadosAPI(dados);
 
-            foreach (var data in dados)
-            {
-                var prediction = model.Predict(data);
-                Console.WriteLine($"Revenue: {data.Revenue}, Expenses: {data.Expenses}, Predicted Profit: {prediction.Profit}");
-            }
-        }
+        //    foreach (var data in dados)
+        //    {
+        //        var prediction = model.Predict(data);
+        //        Console.WriteLine($"Revenue: {data.Revenue}, Expenses: {data.Expenses}, Predicted Profit: {prediction.Profit}");
+        //    }
+        //}
 
         public void MostrarPaginaAnterior()
         {
