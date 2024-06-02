@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             btnOpen = new System.Windows.Forms.Button();
             btnSubmit = new System.Windows.Forms.Button();
             btnBeforePage = new System.Windows.Forms.Button();
@@ -184,6 +185,7 @@
             Controls.Add(btnBeforePage);
             Controls.Add(btnSubmit);
             Controls.Add(btnOpen);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "FormMain";
             Text = "Main";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
