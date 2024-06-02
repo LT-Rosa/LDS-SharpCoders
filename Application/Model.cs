@@ -33,7 +33,7 @@ namespace Application
             //ProcessarDadosAPI(resultado);
             try
             {
-                ProcessarDadosAPI(dados);
+                ProcessarDadosAPI(dados, dataToAnalyse);
             }
             catch (Exception ex)
             {
@@ -41,7 +41,7 @@ namespace Application
             }
         }
 
-        public void ProcessarDadosAPI(List<FinancialData> dataList)
+        public void ProcessarDadosAPI(List<FinancialData> dataList, List<FinancialData>dataToAnalyse)
         {
             MLContext _mlContext = new MLContext();
             IDataView _dataView = _mlContext.Data.LoadFromEnumerable(dataList);
