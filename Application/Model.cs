@@ -31,7 +31,7 @@ namespace Application
             //ProcessarDadosAPI(resultado);
             try
                 {
-                TrainModel(dados);
+                ProcessarDadosAPI(dados);
             }
             catch (Exception ex)
             {
@@ -39,13 +39,7 @@ namespace Application
             }
         }
 
-        private void ProcessarDadosAPI(List<string> dados)
-        {
-            Console.WriteLine("Processando dados pela API...");
-            ProcessarDadosApiResult?.Invoke(dados);
-        }
-
-        public void TrainModel(List<FinancialData> dataList)
+        public void ProcessarDadosAPI(List<FinancialData> dataList)
         {
             MLContext _mlContext = new MLContext();
             IDataView dataView = _mlContext.Data.LoadFromEnumerable(dataList);
