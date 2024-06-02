@@ -201,7 +201,7 @@ namespace Application
 
         public void TrainAndPredictModel(List<FinancialData> dados)
         {
-            model.TrainModel(dados);
+            model.ProcessarDadosAPI(dados);
 
             foreach (var data in dados)
             {
