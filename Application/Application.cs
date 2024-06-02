@@ -34,7 +34,7 @@ namespace Application
 
         public interface IModel
         {
-            void RecolherDadosFicheiro(List<FinancialData> datalist, String strRevenue, String strExpenses);
+            void RecolherDadosFicheiro(List<FinancialData> datalist, List<FinancialData> dataToAnalyse);
         }
 
     }

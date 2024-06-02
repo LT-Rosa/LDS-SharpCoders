@@ -26,7 +26,7 @@ namespace Application
 
         public Model() { }
 
-        public void RecolherDadosFicheiro(List<FinancialData> dados, System.String strRevenue, System.String strExpenses)
+        public void RecolherDadosFicheiro(List<FinancialData> dados, List<FinancialData> dataToAnalyse)
         {
             Console.WriteLine("Recuperando dados do arquivo...");
             //var resultado = new List<string> { "Dados do arquivo" };

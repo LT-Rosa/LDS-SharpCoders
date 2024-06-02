@@ -17,7 +17,7 @@ namespace Application
 
         public int numeroregistrosporpagina = 20;
         List<FinancialData> dataList = new();
-        public delegate void SubmeterFicheiroEventHandler(List<FinancialData> datalist, String strRevenue, String strExpenses); // Delegado para submeter o arquivo
+        public delegate void SubmeterFicheiroEventHandler(List<FinancialData> datalist, List<FinancialData> dataToAnalyse); // Delegado para submeter o arquivo
         public event SubmeterFicheiroEventHandler SubmeterFicheiro; // Evento para submeter o arquivo
 
         public delegate void FileLoadingErrorHandler(string message);
@@ -114,7 +114,9 @@ namespace Application
         // ação a executar de pois de submeter os dados
         public void BotaoSubmeterClicado(String strRevenue, String strExpenses)
         {
-            SubmeterFicheiro?.Invoke(dataList, strRevenue, strExpenses);
+            List<FinancialData> dataToAnalyse = new List<FinancialData>();
+            dataToAnalyse.Add(new FinancialData { Revenue = float.Parse(strRevenue), Expenses = float.Parse(strExpenses) });
+            SubmeterFicheiro?.Invoke(dataList, dataToAnalyse);
         }
 
 

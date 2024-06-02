@@ -35,12 +35,10 @@ namespace Application
                 this.view.SubmeterFicheiro += SubmeterFicheiro;
             }
 
-            private void SubmeterFicheiro(List<FinancialData> datalist, String strRevenue, String strExpenses)
+            private void SubmeterFicheiro(List<FinancialData> datalist, List<FinancialData> dataToAnalyse)
             {
-                List<FinancialData> dataToAnalyse = new List<FinancialData>();
-                dataToAnalyse.Add(new FinancialData { Revenue = float.Parse(strRevenue), Expenses = float.Parse(strExpenses) });
                 // var dados = model.RecolherDadosFicheiro();
-                model.RecolherDadosFicheiro(datalist, strRevenue, strExpenses);
+                model.RecolherDadosFicheiro(datalist, dataToAnalyse);
                 //  view.OutputDados(dadosProcessados);
             }
 
